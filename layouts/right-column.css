@@ -1,0 +1,11 @@
+/* @group Right Column Layout */
+
+#content{
+	float: left;
+}
+
+#primary{
+	float: right;
+}
+
+/* @end */

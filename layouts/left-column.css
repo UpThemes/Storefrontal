@@ -1,0 +1,11 @@
+/* @group Left Column */
+
+#content{
+	float: right;
+}
+
+#sidebar{
+	float: left;
+}
+
+/* @end */
