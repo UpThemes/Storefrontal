@@ -1,13 +1,24 @@
 <?php
 
-include( get_template_directory().'/admin/admin.php' );
-include( get_template_directory().'/library/meta_handler.php' );
-include( get_template_directory().'/library/slides.php' );
-include( get_template_directory().'/constants.php' );
-include( get_template_directory().'/classes.php' );
-include( get_template_directory().'/widgets.php' );
+// Load UpThemes Framework
+require_once( get_template_directory().'/admin/admin.php' );
 
-remove_action('wp_head', 'wp_generator');
+// Load Theme Options into Array
+//require_once(get_template_directory() . '/theme-options/layout-and-display.php');
+require_once(get_template_directory() . '/theme-options/colors-and-images.php');
+
+// Set Up Theme
+require_once( get_template_directory().'/library/theme_setup.php' );
+require_once( get_template_directory().'/library/constants.php' );
+
+// Homepage Slides
+require_once( get_template_directory().'/library/meta_handler.php' );
+require_once( get_template_directory().'/library/slides.php' );
+
+// Custom Widgets
+require_once( get_template_directory().'/library/widgets.php' );
+
+//remove_action('wp_head', 'wp_generator');
 
 if ( function_exists('register_sidebar') ) {
 	register_sidebar(array(
@@ -19,31 +30,23 @@ if ( function_exists('register_sidebar') ) {
 		'after_title' => '</h2>'
 	));
 	register_sidebar(array(
-		'id' => 'footer-section',
-		'name' => 'Footer Section',
-		'before_widget' => '<div class="block">',
-		'after_widget' => '</div>',
-		'before_title' => '<h2>',
-		'after_title' => '</h2>'
-	));
-	register_sidebar(array(
-		'id' => 'about',
-		'name' => 'About',
+		'id' => 'footer-1',
+		'name' => 'Footer 1 (left side)',
 		'before_widget' => '<div class="block frame">',
 		'after_widget' => '</div>',
 		'before_title' => '<h2>',
 		'after_title' => '</h2>'
 	));
 	register_sidebar(array(
-		'id' => 'shop_cart',
-		'name' => 'Shopping Cart',
-		'before_widget' => '<div class="sb-widget %2$s">',
+		'id' => 'footer-2',
+		'name' => 'Footer 2 (right side)',
+		'before_widget' => '<div class="block">',
 		'after_widget' => '</div>',
 		'before_title' => '<h2>',
 		'after_title' => '</h2>'
 	));
 	register_sidebar(array(
-		'id' => 'home-section',
+		'id' => 'home-1',
 		'name' => 'Column 1 (homepage)',
 		'before_widget' => '<div class="widget %2$s">',
 		'after_widget' => '</div>',
@@ -51,8 +54,16 @@ if ( function_exists('register_sidebar') ) {
 		'after_title' => '</h3>'
 	));
 	register_sidebar(array(
-		'id' => 'home-section1',
+		'id' => 'home-2',
 		'name' => 'Column 2 (homepage)',
+		'before_widget' => '<div class="widget %2$s">',
+		'after_widget' => '</div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>'
+	));
+	register_sidebar(array(
+		'id' => 'home-3',
+		'name' => 'Column 3 (homepage)',
 		'before_widget' => '<div class="widget %2$s">',
 		'after_widget' => '</div>',
 		'before_title' => '<h3>',
@@ -81,9 +92,62 @@ function storefrontal_init(){
 	deregister_theme_layout('left_column_grid');
 	deregister_theme_layout('right_column_grid');
 
+	register_default_headers( array (
+		'default' => array (
+			'url' => '%s/images/logo-storefrontal.png',
+			'thumbnail_url' => '%s/images/logo-storefrontal.png',
+			'description' => __( 'Storefrontal Logo', 'storefrontal' ) )
+		)
+	);
+
+	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'storefrontal_header_image_width', 253 ) );
+	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'storefrontal_header_image_height',	57 ) );
+	define( 'HEADER_TEXTCOLOR', apply_filters( 'storefrontal_header_image_textcolor', "#ff4a4b" ) );
+	
+	add_custom_image_header('', 'storefrontal_header_image_style','storefrontal_header_image_style_admin');
+
 }
 
 add_action("init","storefrontal_init",400);
+
+function storefrontal_header_image_style(){
+	echo "<style type='text/css'>";
+	echo "#logo a{";
+	echo "height: " . HEADER_IMAGE_HEIGHT . "px";
+	echo "width: " . HEADER_IMAGE_WIDTH . "px";
+	echo "background-image:"; header_image(); echo ";"; 
+	echo "}";
+	echo "</style>";
+
+}
+
+function storefrontal_header_image_style_admin(){
+	echo "<link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'/>";
+	echo "<style type='text/css'>";
+	echo "#logo{";
+	echo "margin-bottom: 0.3em;";
+	echo "}";
+	echo "#logo a{";
+	echo "height: " . HEADER_IMAGE_HEIGHT . "px";
+	echo "width: " . HEADER_IMAGE_WIDTH . "px";
+	echo "background-image:"; header_image(); echo ";"; 
+	echo "font-family: Neuton;";
+	echo "color: #ff4a4b;";
+	echo "font-size: 53px;";
+	echo "font-weight: normal;";
+	echo "text-decoration: none;";
+	echo "}";
+	echo "p.desc{";
+	echo "text-transform: uppercase;";
+	echo "font-family: Neuton;";
+	echo "font-size: 17px;";
+	echo "color: #6b6666;";
+	echo "}";
+	echo "</style>";
+	echo "<h1 id='logo'><a href=" . get_bloginfo('url') . ">" . get_bloginfo('name') . "</a></h1>";
+	echo "<p class='desc'>" . get_bloginfo('description') . "</h1>";
+
+}
 
 // register tag [template-url]
 function filter_template_url($text) {
@@ -101,6 +165,24 @@ function change_menu_classes($css_classes) {
 }
 add_filter('nav_menu_css_class', 'change_menu_classes');
 
+function storefrontal_navigation(){
+
+	if( function_exists('wp_pagenavi') ) : ?>
+	<div class="paging">
+		<div class="paging-holder">
+			<div class="paging-frame">
+				<?php wp_pagenavi(); ?>
+			</div>
+		</div>
+	</div>
+	<?php else : ?>
+		<div class="navigation">
+			<div class="next"><?php next_posts_link(__('Older Entries &raquo;','storefrontal')) ?></div>
+			<div class="prev"><?php previous_posts_link(__('&laquo; Newer Entries','storefrontal')) ?></div>
+		</div>
+	<?php endif;
+
+}
 
 //allow tags in category description
 $filters = array('pre_term_description', 'pre_link_description', 'pre_link_notes', 'pre_user_description');
@@ -162,6 +244,14 @@ function get_audio_files($postid){
 	}
 	if(!count($attachment)) return false;
 	else return $audio_files;
+}
+
+function the_404_content(){ ?>
+	<h2><?php _e("Not Found","storefrontal"); ?></h2>
+	<p><?php _e("Sorry, but you are looking for something that isn't here.","storefrontal"); ?></p> <?php
+	if( is_search() )
+		get_search_form();
+	
 }
 
 function custom_wpsc_pagination($totalpages = '', $per_page = '', $current_page = '', $page_link = '') {
@@ -328,17 +418,18 @@ function custom_wpsc_pagination($totalpages = '', $per_page = '', $current_page 
 	echo $output;
 }
 
-function get_theme_style(){
+function storefrontal_theme_style($classes){
 
+/*
 	global $up_options;
 
-	if( !empty($up_options->color_scheme) )
-		$theme_style = $up_options->color_scheme;
-	else
-		$theme_style = 'default';
-
-	return $theme_style;
+	if( $up_options->color_scheme )
+		$classes[] = $up_options->color_scheme;
+*/
+	return $classes;
 
 }
+
+add_filter('body_class','storefrontal_theme_style');
 
 ?>

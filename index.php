@@ -13,11 +13,11 @@
 			<a href="<?php the_permalink(); ?>" class="img-holder"><?php echo $thumbnail; ?></a>
 			<?php endif; ?>
 			<dl>
-				<dt>posted on</dt>
+				<dt><?php _e("posted on","storefrontal"); ?></dt>
 				<dd class="date"><?php the_time('m.d.Y') ?></dd>
-				<dt>author</dt>
+				<dt><?php _e("author","storefrontal"); ?></dt>
 				<dd><?php the_author(); ?></dd>
-				<dt>category</dt>
+				<dt><?php _e("category","storefrontal"); ?></dt>
 				<dd><?php the_category(', ') ?></dd>
 			</dl>
 			<ul class="social-networks">
@@ -32,25 +32,12 @@
 		</div>
 	</div>
 	<?php endwhile; ?>
-	<?php if(function_exists('wp_pagenavi')) : ?>
-	<div class="paging">
-		<div class="paging-holder">
-			<div class="paging-frame">
-				<?php wp_pagenavi(); ?>
-			</div>
-		</div>
-	</div>
-	<?php else : ?>
-		<div class="navigation">
-			<div class="next"><?php next_posts_link(__('Older Entries &raquo;','storefrontal')) ?></div>
-			<div class="prev"><?php previous_posts_link(__('&laquo; Newer Entries','storefrontal')) ?></div>
-		</div>
-	<?php endif; ?>
+
+	<?php storefrontal_navigation(); ?>
 	
 	<?php else : ?>
 	<div class="post">
-		<h2><?php _e("Not Found","storefrontal"); ?></h2>
-		<p><?php _e("Sorry, but you are looking for something that isn't here.","storefrontal"); ?></p>
+		<?php the_404_content(); ?>
 	</div>
 	<?php endif; ?>
 	

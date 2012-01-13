@@ -2,12 +2,8 @@
             <div id="footer">
                 <div class="footer-holder">
                     <div class="footer-frame">
-                        <?php dynamic_sidebar('about'); ?>
-                        <?php if (is_active_sidebar('footer-section')) : ?>
-                        <div class="block-holder">
-                            <?php dynamic_sidebar('footer-section'); ?>
-                        </div>
-                        <?php endif; ?>
+                        <?php get_sidebar('footer-1'); ?>
+                        <?php get_sidebar('footer-2'); ?>
                     </div>
                 </div>
         </div>

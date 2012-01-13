@@ -5,7 +5,7 @@ if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['
 	die ('Please do not load this page directly. Thanks!');
 
 if ( post_password_required() ) {
-	?> <p>This post is password protected. Enter the password to view comments.</p> <?php
+	?> <p><?php _e("This post is password protected. Enter the password to view comments.","storefrontal"); ?></p> <?php
 	return;
 }
 	
@@ -17,14 +17,14 @@ function theme_comment($comment, $args, $depth) {
 			<?php echo get_avatar( $comment, 48 ); ?>
 			<p class="meta"><?php comment_date('F d, Y'); ?> at <?php comment_time('g:i a'); ?>, <?php comment_author_link(); ?> said:</p>
 			<?php if ($comment->comment_approved == '0') : ?>
-			<p>Your comment is awaiting moderation.</p>
+			<p><?php _e("Your comment is awaiting moderation.","storefrontal"); ?></p>
 			<?php else: ?>
 			<?php comment_text(); ?>
 			<?php endif; ?>
 			
 			<?php
 				comment_reply_link(array_merge( $args, array(
-					'reply_text' => 'Reply',
+					'reply_text' => __("Reply'","storefrontal"),
 					'before' => '<p>',
 					'after' => '</p>',
 					'depth' => $depth,
@@ -42,7 +42,7 @@ function theme_comment($comment, $args, $depth) {
 
 <div class="section comments" id="comments">
 
-	<h2><?php comments_number('No Responses', 'One Response', '% Responses' );?> to &#8220;<?php the_title(); ?>&#8221;</h2>
+	<h2><?php comments_number( __("No Responses","storefrontal"), __("One Response","storefrontal"), __("% Responses","storefrontal") ); ?> <?php _e("to","storefrontal"); ?> &#8220;<?php the_title(); ?>&#8221;</h2>
 
 	<ol class="commentlist">
 		<?php wp_list_comments(array(
@@ -52,8 +52,8 @@ function theme_comment($comment, $args, $depth) {
 	</ol>
 
 	<div class="navigation">
-		<div class="next"><?php previous_comments_link('&laquo; Older Comments') ?></div>
-		<div class="prev"><?php next_comments_link('Newer Comments &raquo;') ?></div>
+		<div class="next"><?php previous_comments_link(__("&laquo; Older Comments","storefrontal")) ?></div>
+		<div class="prev"><?php next_comments_link(__("Newer Comments &raquo;","storefrontal")) ?></div>
 	</div>
 
 </div>
@@ -65,7 +65,7 @@ function theme_comment($comment, $args, $depth) {
 
 	 <?php else : // comments are closed ?>
 		<!-- If comments are closed. -->
-		<p>Comments are closed.</p>
+		<p><?php _e("Comments are closed.","storefrontal"); ?></p>
 
 	<?php endif; ?>
 	
@@ -76,43 +76,43 @@ function theme_comment($comment, $args, $depth) {
 
 <div id="respond">
 	<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" name="commentform" id="commentform" class="form-holder">
-		<h2><?php comment_form_title( 'Leave a Reply', 'Leave a Reply to %s' ); ?></h2>
+		<h2><?php comment_form_title( __("Leave a Reply","storefrontal"), __("Leave a Reply to %s","storefrontal") ); ?></h2>
 		<div class="cancel-comment-reply"><?php cancel_comment_reply_link(); ?></div>
 	
 		<?php if ( get_option('comment_registration') && !is_user_logged_in() ) : ?>
-		<p>You must be <a href="<?php echo wp_login_url( get_permalink() ); ?>">logged in</a> to post a comment.</p>
+		<p><?php echo str_replace( "%s",wp_login_url( get_permalink() ), __('You must be <a href="%s">logged in</a> to post a comment.','storefrontal') ); ?></p>
 		<?php else : ?>
 		
 		<?php if ( is_user_logged_in() ) : ?>
 
-		<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account">Log out &raquo;</a></p>
+		<p><?php _e("Logged in as","storefrontal"); ?> <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="Log out of this account"><?php _e("Log out &raquo;","storefrontal"); ?></a></p>
 
 		<?php else : ?>
 		<div class="row">
-			<label for="author">Name</label>
+			<label for="author"><?php _e("Name","storefrontal"); ?></label>
 			<div class="text-holder">
 				<input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" />
 			</div>
 		</div>
 		<div class="row">
-			<label for="email">E-Mail (will not be published)</label>
+			<label for="email"><?php _e("E-Mail (will not be published)","storefrontal"); ?></label>
 			<div class="text-holder">
 				<input type="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" />
 			</div>
 		</div>
 		<div class="row">
-			<label for="url">Website</label>
+			<label for="url"><?php _e("Website","storefrontal"); ?></label>
 			<div class="text-holder">
 				<input type="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" />
 			</div>
 		</div>
 		<?php endif; ?>
 		<div class="row">
-			<label for="comment">Comment</label>
+			<label for="comment"><?php _e("Comment","storefrontal"); ?></label>
 			<textarea name="comment" id="comment" cols="50" rows="10"></textarea>
 		</div>
 		<div class="row">
-			<a href="#" onclick="commentform.submit();return false;" class="btn-add"><span>Submit Comment</span></a>
+			<a href="#" onclick="commentform.submit();return false;" class="btn-add"><span><?php _e("Submit Comment","storefrontal"); ?></span></a>
 		</div>
 		<?php
 			comment_id_fields();

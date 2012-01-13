@@ -344,12 +344,14 @@ blockquote  cite{
 #header .logo{
 	width:253px;
 	height:57px;
+	float:left;
+	margin:56px 0 0 -1px;
+}
+#header .logo a{
 	background:url(../images/logo-storefrontal.png) no-repeat;
 	text-indent:-9999px;
 	overflow:hidden;
 	font-size:0;
-	margin:56px 0 0 -1px;
-	float:left;
 }
 #header .logo a{
 	display:block;
@@ -359,9 +361,58 @@ blockquote  cite{
 	position:absolute;
 	left:-9999px;
 }
-.dark #header .logo{
+.dark #header .logo a{
 	background:url(../images/logo-storefrontal-dark.png) no-repeat;
 }
+
+#header .header-text{
+	float: left;
+	width: 350px;
+	margin:56px 0 0 -1px;
+}
+
+#header .header-text .logo{
+	width: 300px;
+	height: auto;
+	background: none;
+	float: none;
+	margin: 0;
+	margin-bottom: 0.3em;
+}
+
+#header .header-text .logo a{
+	width: auto;
+	height: auto;
+	background: none;
+	font-family: Neuton;
+	color: #ff4a4b;
+	font-size: 53px;
+	font-weight: normal;
+	text-decoration: none;
+	text-indent: none;
+	width: auto;
+	height: auto;
+	overflow: none;
+	display: inline;
+	float: none;
+}
+
+.dark #header .header-text .logo a{
+	color: #f4c32f;
+}
+
+#header .header-text p.desc{
+	text-transform: uppercase;
+	font-family: Neuton;
+	font-size: 17px;
+	color: #6b6666;
+	display: block;
+}
+
+.dark #header .header-text p.desc{
+	color: #999;
+}
+
 #header .nav-holder{float:right;}
 .nav-holder .link-holder{
 	width:100%;
@@ -399,7 +450,7 @@ blockquote  cite{
 	text-shadow: 1px 1px 0 #fff;
 	color:#6b4105;
 }
-#nav{
+#header div > ul{
 	float:right;
 	margin:0 -15px 0 0;
 	padding:0;
@@ -408,21 +459,22 @@ blockquote  cite{
 	position:relative;
 	z-index:100;
 }
-#nav li{
+#header div > ul li{
 	margin:0 0 0 12px;
 	float:left;
 	position:relative;
 }
-#nav>li>a{
+#header div > ul>li>a{
 	padding:7px 15px 8px 15px;
 	color:#3a3434;
 	float:left;
 }
-#nav .drop-dawn a{
-	padding:7px 23px 8px 15px ;
+#header div > ul .drop-dawn a{
+	padding:7px 23px 8px 15px;
+	background: transparent url(../images/arrow_black.png) 100% 18px no-repeat;
 }
-.dark #nav li a{color:#cdcfca;}
-#nav>li:hover>a{
+.dark #header div > ul li a{color:#cdcfca;}
+#header div > ul>li:hover>a{
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px; 
@@ -430,19 +482,22 @@ blockquote  cite{
 	color:#fff;
 	text-decoration:none;
 }
-#nav>.drop-dawn:hover>a{
+#header div > ul>.drop-dawn:hover>a{
 	text-decoration:none;
-	background:#cc3b3b url(../images/arrow.gif) 100% 18px no-repeat;
+	background:#cc3b3b url(../images/arrow_white.png) 100% 18px no-repeat;
 	-webkit-border-radius: 5px 5px 0 0;
 	-moz-border-radius: 5px 5px 0 0;
 	border-radius: 5px 5px 0 0; 
 	color:#fff;
 }
-.dark #nav li:hover a{background:#f4c32f;}
-#nav li:hover ul{display:block;}
-#nav li:hover ul li ul{display:none;}
-#nav li ul li:hover ul{display:block;}
-#nav li ul{
+.dark #header div > ul>.drop-dawn:hover>a{
+	background: #f4c32f url(../images/arrow_white.png) 100% 18px no-repeat;
+}
+.dark #header div > ul li:hover a{background-color:#f4c32f;}
+#header div > ul li:hover ul{display:block;}
+#header div > ul li:hover ul li ul{display:none;}
+#header div > ul li ul li:hover ul{display:block;}
+#header div > ul li ul{
 	-webkit-border-radius: 0 5px 5px 5px;
 	-moz-border-radius: 0 5px 5px 5px;
 	border-radius: 0 5px 5px 5px;
@@ -460,52 +515,52 @@ blockquote  cite{
 	z-index:260;
 	background:url(../images/none.gif);
 }
-.dark #nav li ul{border:5px solid #f4c32f;}
-#nav li ul li{
+.dark #header div > ul li ul{border:5px solid #f4c32f;}
+#header div > ul li ul li{
 	float:none;
 	margin:0;
 	border-top:1px solid #cc3b3b;
 	background:#cc3b3b;
 }
-#nav li ul li:first-child a{
+#header div > ul li ul li:first-child a{
 	-webkit-border-radius: 5px 5px 0 0 ;
 	-moz-border-radius: 5px 5px 0 0;
 	border-radius: 5px 5px 0 0; 
 }
-#nav li ul li:last-child a{
+#header div > ul li ul li:last-child a{
 	-webkit-border-radius:0 0 5px 5px;
 	-moz-border-radius:0 0 5px 5px;
 	border-radius:0 0 5px 5px; 
 }
-.dark #nav li ul li{
+.dark #header div > ul li ul li{
 	border-top:1px solid #f4c32f;
 	background:#f4c32f;
 }
-#nav li ul .drop-dawn:hover a{
+#header div > ul li ul .drop-dawn:hover a{
 	background:#fff url(../images/arrow-nav.png) no-repeat 100% 50%!important;
 	text-decoration:none;
 	color:#cc3b3b!important;
 }
-#nav li ul li:hover a{
+#header div > ul li ul li:hover a{
 	color:#cc3b3b!important;
 	background:#fff!important;
 	text-decoration:none;
 }
-.dark #nav li ul .drop-dawn:hover a{color:#855d06!important;}
-#nav li ul li:hover a:hover{
+.dark #header div > ul li ul .drop-dawn:hover a{color:#855d06!important;}
+#header div > ul li ul li:hover a:hover{
 	text-decoration:none;
 }
-#nav li ul li a{
+#header div > ul li ul li a{
 	padding:5px 10px 8px;
 	color:#cc3b3b!important;
 	display:block;
 	-webkit-border-radius: 0;
 	-moz-border-radius: 0;
-	background:#f9e9e9!important;
+	background:rgba(255,255,255,0.9) !important;
 	text-decoration:none;
 }
-.dark #nav li ul li a{color:#855d06!important;}
-#nav li ul ul{
+.dark #header div > ul li ul li a{color:#855d06!important;}
+#header div > ul li ul ul{
 	width:134px;
 	-webkit-border-radius: 0 5px 5px 5px;
 	-moz-border-radius: 0 5px 5px 5px;
@@ -520,23 +575,23 @@ blockquote  cite{
 	left:100%;
 	z-index:250;
 }
-.dark #nav li ul ul{top:-6px;}
-#nav li ul li ul li{
+.dark #header div > ul li ul ul{top:-6px;}
+#header div > ul li ul li ul li{
 	float:none;
 	margin:0;
-	background:#cc3b3b;
+	background:rgba(255,255,255,0.9);
 	border-top:1px solid #cc3b3b;
 }
-#wrapper #nav li ul li ul li:hover a{
+#wrapper #header div > ul li ul li ul li:hover a{
 	color:#cc3b3b!important;
 	background:#fff!important;
 }
-#wrapper #nav li ul li ul li  a{
+#wrapper #header div > ul li ul li ul li  a{
 	color:#cc3b3b!important;
 	display:block!important;
-	background:#f9e9e9!important;
+	background:rgba(255,255,255,0.9) !important;
 }
-.dark #wrapper #nav li ul li ul li  a{color:#855d06!important;}
+.dark #wrapper #header div > ul li ul li ul li  a{color:#855d06!important;}
 #main{
 	width:940px;
 	margin:0 auto 54px;
@@ -874,6 +929,10 @@ blockquote  cite{
 	color:#ff4a4b;
 	font:18px/20px CabinBold, Arial, sans-serif;
 }
+
+.dark #main .block-holder .col .widget h3{
+	color: white;
+}
 .dark #main .block-holder .col .widget h3 a{color:#e9ebe6;}
 #main .block-holder .col .widget h3 a{
 	color:#ff4a4b;
@@ -1015,7 +1074,8 @@ blockquote  cite{
 .dark .cart-widget .subtotal{color:#cdcfca;}
 .cart-widget .links-holder{
 	width:100%;
-	overflow:hidden;
+	overflow:auto;
+	padding-bottom: 20px;
 }
 .cart-widget .empty{
 	color:#ff4a4b;
@@ -1088,6 +1148,9 @@ blockquote  cite{
 	margin-top:-6px;
 	border-top: 1px solid #e4e5e3;
 	padding:26px 0 0;
+}
+#sidebar .footer-form{
+	border-top: 1px solid #666;
 }
 #sidebar .cart-widget+.footer-form{
 	margin:0;
@@ -1276,11 +1339,14 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 .dark #content .post .text h2 a{color:#e9ebe6;}
 #content .paging-holder{
 	width:602px;
-	padding:29px 0 6px;
+	padding:14px 0 10px 0;
 	margin:0;
 	overflow:hidden;
 	border-top:1px solid #e4e5e3;
 	text-align:center;
+}
+#content .paging-holder{
+	border-top-color: #666;
 }
 #content .paging-holder .next-link,
 #content .paging-holder .prev-link{
