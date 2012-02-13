@@ -12,9 +12,20 @@
 
 	    <?php
 	    
+<<<<<<< HEAD
 	    if( file_exists(TEMPLATEPATH.'/readme.html') ):
 		    
 		    echo file_get_contents ( TEMPLATEPATH . '/readme.html' );
+=======
+	    if( file_exists(THEME_DIR.'/readme.html') ):
+		    
+		    $ch = curl_init();
+		    curl_setopt($ch, CURLOPT_URL, THEME_DIR."/readme.html");
+		    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		    $data = curl_exec($ch);
+		    curl_close($ch);
+		    echo $data;
+>>>>>>> e27f2f23c197aebf8f7d797d070ffcc5b23d5a7a
 		
 		else:
 		

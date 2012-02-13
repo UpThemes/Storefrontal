@@ -3,6 +3,13 @@
 // Load UpThemes Framework
 require_once( get_template_directory().'/admin/admin.php' );
 
+<<<<<<< HEAD
+=======
+// Load Theme Options into Array
+//require_once(get_template_directory() . '/theme-options/layout-and-display.php');
+require_once(get_template_directory() . '/theme-options/colors-and-images.php');
+
+>>>>>>> e27f2f23c197aebf8f7d797d070ffcc5b23d5a7a
 // Set Up Theme
 require_once( get_template_directory().'/library/theme_setup.php' );
 require_once( get_template_directory().'/library/constants.php' );
@@ -16,12 +23,15 @@ require_once( get_template_directory().'/library/widgets.php' );
 
 //remove_action('wp_head', 'wp_generator');
 
+<<<<<<< HEAD
 add_action("init", "product_thumbnails_init");
 
 function product_thumbnails_init() {
 	add_post_type_support( "wpsc-product", "thumbnail" );
 }
 
+=======
+>>>>>>> e27f2f23c197aebf8f7d797d070ffcc5b23d5a7a
 if ( function_exists('register_sidebar') ) {
 	register_sidebar(array(
 		'id' => 'default-sidebar',
