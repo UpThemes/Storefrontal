@@ -1,0 +1,189 @@
+<?php
+/**
+ * Theme Colors and Images Settings Functions file
+ * 
+ * The /theme-options/colors-and-images_0.php file defines
+ * the colors and images options for the Theme.
+ * 
+ * How to use this file:
+ * 1) Save this template to the 'theme-options' folder in the Theme root
+ * 2) Change the file name to this syntax (remember to add the .php 
+ *    extension): tab-name_#.php, where:
+ *    - tab-name = Name of the Tab as it will appear in the Admin menu
+ *    - # = position tab will appear, relative to other tabs
+ * 3) Add options to the $options array
+ * 4) BOOM!
+ * 
+ * To add additional options, add arrays to the $options
+ * array, with each new array containing the following
+ * array keys:
+ * - key 	name	string	(required)	option name
+ * - key	desc	string	(required)	option description
+ * - key	id		string	(required)	option slug
+ * - key	type	string	(required)	option type; one of: text, color, image, select, multiple, textarea, page, pages, category, categories
+ * - key	value	string	(required)	default option value, replaced when custom value is entered (text, color, select, textarea, page, category)
+ * - key	options	array	(optional)	associative array of valid options for select-type options, in the form of "Name" => "slug"
+ * - key	attr	array	(optional)	form-field attributes
+ * - keys	url		string	(optional)	default-image URL, for image-type options
+ * 
+ * @package 	Micro
+ * @copyright	Copyright (c) 2011, UpThemes
+ * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+ *
+ * @since 		Micro 1.0
+ */
+
+$thistab = array(
+	"name" => "colors_and_images",
+	"title" => __("Colors and Images","upfw"),
+	'sections' => array(
+		'color_scheme' => array(
+			'name' => 'color_scheme',
+			'title' => __( 'Color Scheme', 'upfw' ),
+			'description' => __( 'Select your color scheme.','upfw' )
+		)
+	)
+);
+
+$options = array(
+	'theme_color_scheme' => array(
+		'tab' => $thistab['name'],
+		"name" => "theme_color_scheme",
+		"title" => "Theme Color Scheme",
+		'description' => __( 'Display header navigation menu above or below the site title/description?', 'storefrontal' ),
+		'section' => 'color_scheme',
+		'since' => '1.0',
+	    "id" => "color_scheme",
+	    "type" => "select",
+	    "default" => "light",
+	    "valid_options" => array(
+	    	'light' => array(
+	    		"name" => "light",
+	    		"title" => __( 'Light', 'storefrontal' )
+	    	),
+	    	'dark' => array(
+	    		"name" => "dark",
+	    		"title" => __( 'Dark', 'storefrontal' )
+	    	)
+	    )
+	),  
+	'favorite_colors' => array(
+		'tab' => $thistab['name'],
+		"name" => "favorite_colors",
+		"title" => "Favorite Colors",
+		'description' => __( 'What are your favorite colors?', 'storefrontal' ),
+		'section' => 'color_scheme',
+		'since' => '1.0',
+	    "id" => "color_scheme",
+	    "type" => "multiple",
+	    "default" => "blue",
+	    "valid_options" => array(
+	    	'blue' => array(
+	    		"name" => "blue",
+	    		"title" => __( 'Blue', 'storefrontal' )
+	    	),
+			'red' => array(
+				"name" => "red",
+				"title" => __( 'Red', 'storefrontal' )
+			),
+			'orange' => array(
+				"name" => "orange",
+				"title" => __( 'Orange', 'storefrontal' )
+			),
+			'purple' => array(
+				"name" => "purple",
+				"title" => __( 'Purple', 'storefrontal' )
+			),
+			'yellow' => array(
+				"name" => "yellow",
+				"title" => __( 'Yellow', 'storefrontal' )
+			),
+			'pink' => array(
+				"name" => "pink",
+				"title" => __( 'Pink', 'storefrontal' )
+			)
+	    )
+	),  
+	'favorite_shapes' => array(
+		'tab' => $thistab['name'],
+		"name" => "favorite_shapes",
+		"title" => "Favorite Shapes",
+		'description' => __( 'What are your favorite shapes?', 'storefrontal' ),
+		'section' => 'color_scheme',
+		'since' => '1.0',
+	    "id" => "color_scheme",
+	    "type" => "checkbox",
+	    "default" => "circle",
+	    "valid_options" => array(
+	    	'blue' => array(
+	    		"name" => "circle",
+	    		"title" => __( 'Circle', 'storefrontal' )
+	    	),
+			'red' => array(
+				"name" => "square",
+				"title" => __( 'Square', 'storefrontal' )
+			),
+			'orange' => array(
+				"name" => "rectangle",
+				"title" => __( 'Rectangle', 'storefrontal' )
+			),
+			'purple' => array(
+				"name" => "triangle",
+				"title" => __( 'Triangle', 'storefrontal' )
+			)
+	    )
+	),  
+	'footer_text' => array(
+		'tab' => $thistab['name'],
+		"name" => "footer_text",
+		"title" => "Footer Text",
+		'description' => __( 'Default footer text to display when footer widgets are not present.', 'storefrontal' ),
+		'section' => 'color_scheme',
+		'since' => '1.0',
+	    "id" => "color_scheme",
+	    "type" => "textarea",
+	    "default" => "This is the default footer text. It is extremely awesome. Oh yeah."
+	),  
+	'site_title' => array(
+		'tab' => $thistab['name'],
+		"name" => "site_title",
+		"title" => "Site Title",
+		'description' => __( 'Site title for your website.', 'storefrontal' ),
+		'section' => 'color_scheme',
+		'since' => '1.0',
+	    "id" => "color_scheme",
+	    "type" => "text",
+	    "default" => "This is the best site ever."
+	),  
+	'credits' => array(
+		'tab' => $thistab['name'],
+		"name" => "credits",
+		"title" => "Site Credits",
+		'description' => __( 'Who helped create this site? Add their names here:', 'storefrontal' ),
+		'section' => 'color_scheme',
+		'since' => '1.0',
+	    "id" => "color_scheme",
+	    "type" => "text_list",
+	    "default" => array(
+	    	0 => "James McDonald",
+	    	1 => "Chris Wallace",
+	    	2 => "Brad Miller",
+	    )
+	),  
+	'site_title' => array(
+		'tab' => $thistab['name'],
+		"name" => "site_title",
+		"title" => "Site Title",
+		'description' => __( 'Site title for your website.', 'storefrontal' ),
+		'section' => 'color_scheme',
+		'since' => '1.0',
+	    "id" => "color_scheme",
+	    "type" => "text",
+	    "default" => "This is the best site ever."
+	)
+);
+
+register_theme_options($options);
+register_theme_option_tab($thistab);
+
+?>
