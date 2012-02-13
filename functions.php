@@ -16,15 +16,12 @@ require_once( get_template_directory().'/library/widgets.php' );
 
 //remove_action('wp_head', 'wp_generator');
 
-<<<<<<< HEAD
 add_action("init", "product_thumbnails_init");
 
 function product_thumbnails_init() {
 	add_post_type_support( "wpsc-product", "thumbnail" );
 }
 
-=======
->>>>>>> e27f2f23c197aebf8f7d797d070ffcc5b23d5a7a
 if ( function_exists('register_sidebar') ) {
 	register_sidebar(array(
 		'id' => 'default-sidebar',
