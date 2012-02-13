@@ -14,11 +14,7 @@ function upfw_text_field($value,$attr){
                     
                     <fieldset class="data">
                         <div class="inner">
-<<<<<<< HEAD
                             <input type="text" name="<?php echo $value['id']; ?>" value="<?php if( isset( $up_options->$value['id'] ) ): echo $up_options->$value['id']; else: echo $value['value']; endif;?>" id="<?php echo $value['id']; ?>" <?php echo $attr; ?> />
-=======
-                            <input type="text" name="<?php echo $value['id']; ?>" value="<?php if( isset( $value['value'] ) ) echo $value['value']; ?>" id="<?php echo $value['id']; ?>" <?php echo $attr; ?> />
->>>>>>> e27f2f23c197aebf8f7d797d070ffcc5b23d5a7a
                         </div>
                     </fieldset>
                     <div class="clear"></div>
@@ -289,11 +285,7 @@ function upfw_color($value,$attr){
                         <div class="inner">
                             <span class="colorPickerWrapper">
                                 <a href="#" class="clear"><img src="<?php echo THEME_DIR; ?>/admin/images/upfw_ico_delete.png" alt="Delete Text Field" /></a>
-<<<<<<< HEAD
                                 <input type="text" class="popup-colorpicker" id="<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>" value="<?php if( isset( $up_options->$value['id'] ) ) : echo $up_options->$value['id']; else: echo $value['value']; endif;?>" <?php echo $attr; ?> />
-=======
-                                <input type="text" class="popup-colorpicker" id="<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>" value="<?php if( isset( $value['value'] ) ) echo $value['value']; ?>" <?php echo $attr; ?> />
->>>>>>> e27f2f23c197aebf8f7d797d070ffcc5b23d5a7a
                                 <div class="popup-guy">
                                     <div class="popup-guy-inside">
                                         <div id="<?php echo $value['id']; ?>picker" class="color-picker"></div>

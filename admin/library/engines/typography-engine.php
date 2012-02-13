@@ -73,7 +73,6 @@ function upfw_enqueue_font_css(){
                 $font_family = ( isset( $up_fonts[$font]['font_family'] ) ? $up_fonts[$font]['font_family'] : false );
                 $font_family = $font_family ? "font-family:\"{$font_family}\";" : '';
                 
-<<<<<<< HEAD
                 $stylesheet = $up_fonts[$font]['style'];
                 
                 preg_match("/\.css/i", $stylesheet, $matches);
@@ -84,23 +83,6 @@ function upfw_enqueue_font_css(){
                 if( $stylesheet ) wp_enqueue_style( $font, $stylesheet, null, null );
                 
                 if( $selector ) $css .= $selector."\n{\n  {$font_family}\n  {$fontsize}\n  {$lineheight}\n  {$fontstyle}\n  {$letterspacing}\n  {$fontweight}\n  {$texttransform}\n  {$textdecoration}\n  {$textshadow_normal}\n  {$textshadow_moz}\n  {$textshadow_webkit}\n}\n\n";
-=======
-                if( $font && $up_fonts )
-	                $stylesheet = $up_fonts[$font]['style'];
-                
-                if( isset($stylesheet) ):
-                
-                	preg_match("/\.css/i", $stylesheet, $matches);
-
-	                if( $matches )
-		                $stylesheet = $stylesheet.$fontweight_stylesheet;
-		                
-	                if( $stylesheet ) wp_enqueue_style( $font, $stylesheet, null, null );
-	                
-	                if( $selector ) $css .= $selector."\n{\n  {$font_family}\n  {$fontsize}\n  {$lineheight}\n  {$fontstyle}\n  {$letterspacing}\n  {$fontweight}\n  {$texttransform}\n  {$textdecoration}\n  {$textshadow_normal}\n  {$textshadow_moz}\n  {$textshadow_webkit}\n}\n\n";
-	                
-                endif;
->>>>>>> e27f2f23c197aebf8f7d797d070ffcc5b23d5a7a
                 
             endforeach;
         endforeach;
