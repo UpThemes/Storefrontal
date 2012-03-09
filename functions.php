@@ -3,10 +3,6 @@
 // Load UpThemes Framework
 require_once( get_template_directory().'/admin/admin.php' );
 
-// Load Theme Options into Array
-//require_once(get_template_directory() . '/theme-options/layout-and-display.php');
-require_once(get_template_directory() . '/theme-options/colors-and-images.php');
-
 // Set Up Theme
 require_once( get_template_directory().'/library/theme_setup.php' );
 require_once( get_template_directory().'/library/constants.php' );
@@ -18,7 +14,16 @@ require_once( get_template_directory().'/library/slides.php' );
 // Custom Widgets
 require_once( get_template_directory().'/library/widgets.php' );
 
+// Theme Options
+require_once( get_template_directory().'/theme-options/colors-and-images.php' );
+
 //remove_action('wp_head', 'wp_generator');
+
+add_action("init", "product_thumbnails_init");
+
+function product_thumbnails_init() {
+	add_post_type_support( "wpsc-product", "thumbnail" );
+}
 
 if ( function_exists('register_sidebar') ) {
 	register_sidebar(array(
@@ -89,8 +94,8 @@ add_theme_support( 'post-formats', array( 'link', 'quote', 'image', 'video', 'au
 
 function storefrontal_init(){
 
-	deregister_theme_layout('left_column_grid');
-	deregister_theme_layout('right_column_grid');
+	//deregister_theme_layout('left_column_grid');
+	//deregister_theme_layout('right_column_grid');
 
 	register_default_headers( array (
 		'default' => array (

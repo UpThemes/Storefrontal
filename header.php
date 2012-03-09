@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head profile="http://gmpg.org/xfn/11">
-	<title><?php echo wp_title(); ?></title>
+	<title><?php echo up_title(); ?></title>
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 	<link rel="stylesheet" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/all.css" type="text/css"/>
 	<link rel="stylesheet" media="print" href="<?php echo get_template_directory_uri(); ?>/css/print.css" type="text/css"/>

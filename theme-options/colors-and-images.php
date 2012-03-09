@@ -50,7 +50,7 @@ $options = array(
 		'tab' => $thistab['name'],
 		"name" => "theme_color_scheme",
 		"title" => "Theme Color Scheme",
-		'description' => __( 'Display header navigation menu above or below the site title/description?', 'oenology' ),
+		'description' => __( 'Display header navigation menu above or below the site title/description?', 'storefrontal' ),
 		'section' => 'color_scheme',
 		'since' => '1.0',
 	    "id" => "color_scheme",
@@ -66,6 +66,16 @@ $options = array(
 	    		"title" => __( 'Dark', 'storefrontal' )
 	    	)
 	    )
+	),
+	'custom_footer_logo' => array(
+		'tab' => $thistab['name'],
+		"name" => "custom_footer_logo",
+		"title" => "Custom Footer Logo",
+		'description' => __( 'A custom footer logo for your theme.', 'storefrontal' ),
+		'section' => 'color_scheme',
+		'since' => '1.0',
+	    "id" => "color_scheme",
+	    "type" => "image"
 	)
 );
 
