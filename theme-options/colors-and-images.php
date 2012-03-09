@@ -2,16 +2,15 @@
 /**
  * Theme Colors and Images Settings Functions file
  * 
- * The /theme-options/colors-and-images_0.php file defines
+ * The /theme-options/colors-and-images.php file defines
  * the colors and images options for the Theme.
  * 
  * How to use this file:
  * 1) Save this template to the 'theme-options' folder in the Theme root
- * 2) Change the file name to this syntax (remember to add the .php 
- *    extension): tab-name_#.php, where:
- *    - tab-name = Name of the Tab as it will appear in the Admin menu
- *    - # = position tab will appear, relative to other tabs
- * 3) Add options to the $options array
+ * 2) Add this line to the top of your functions.php file: 
+ *    require_once('theme-options/colors-and-images.php');
+ *
+ * 3) Add options to the $options array in the same format as shown below.
  * 4) BOOM!
  * 
  * To add additional options, add arrays to the $options
@@ -81,39 +80,5 @@ $options = array(
 
 register_theme_options($options);
 register_theme_option_tab($thistab);
-
-/*        
-array(  "name" => "Default Hyperlink Color",
-        "desc" => "Enter a default hyperlink color here.",
-        "id" => "default_link_color",
-        "type" => "color"),
-        
-array(  "name" => "Hover Hyperlink Color",
-        "desc" => "Enter a hover hyperlink color here.",
-        "id" => "hover_link_color",
-        "type" => "color"),
-        
-array(  "name" => "Active Hyperlink Color",
-        "desc" => "Enter an active hyperlink color here.",
-        "id" => "active_link_color",
-        "type" => "color"),
-        
-array(  "name" => "Visited Hyperlink Color",
-        "desc" => "Enter a visited hyperlink color here.",
-        "id" => "visited_link_color",
-        "type" => "color"),
-        
-array(  "name" => "Content Text Color",
-        "desc" => "Enter a color here for the content text.",
-        "id" => "content_text_color",
-        "type" => "color"),
-        
-array(  "name" => "Website Favicon",
-        "desc" => "You should upload a small PNG with a size of 16x16.",
-        "id" => "favicon",
-        "value" => "Upload Favicon",
-        "type" => "image")
-          
-*/
 
 ?>

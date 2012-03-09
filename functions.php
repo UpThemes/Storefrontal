@@ -14,10 +14,11 @@ require_once( get_template_directory().'/library/slides.php' );
 // Custom Widgets
 require_once( get_template_directory().'/library/widgets.php' );
 
+// UpThemes Dashboard Widget
+require_once( get_template_directory().'/library/dashboard.php' );
+
 // Theme Options
 require_once( get_template_directory().'/theme-options/colors-and-images.php' );
-
-//remove_action('wp_head', 'wp_generator');
 
 add_action("init", "product_thumbnails_init");
 
@@ -94,8 +95,8 @@ add_theme_support( 'post-formats', array( 'link', 'quote', 'image', 'video', 'au
 
 function storefrontal_init(){
 
-	//deregister_theme_layout('left_column_grid');
-	//deregister_theme_layout('right_column_grid');
+	if( function_exists('upfw_dbwidget_setup') )
+		add_action('wp_dashboard_setup', 'upfw_dbwidget_setup' );
 
 	register_default_headers( array (
 		'default' => array (
