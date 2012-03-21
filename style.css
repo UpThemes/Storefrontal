@@ -17,7 +17,6 @@ Tags: dark, light, white, black, gray, one-column, two-columns, left-sidebar, ri
 	border-bottom:1px solid #cdcfca;
 	-moz-border-radius: 5px;
 	border-radius: 5px; 
-	width:262px;
 	margin:0 0 29px;
 	padding:17px 19px;
 }
@@ -221,16 +220,25 @@ Tags: dark, light, white, black, gray, one-column, two-columns, left-sidebar, ri
     width:100%;
     overflow:hidden;
 }
-.commentlist{
+#content .commentlist{
     margin:0;
     padding:0;
     list-style:none;
 }
-.commentlist .avatar{
+#content .commentlist .avatar{
     float:left;
     margin:0 10px 0 0;
 }
 #content .commentlist p{margin:0 0 5px;}
+#content .comment{
+	margin-left: 70px;
+	min-height: 48px;
+	position: relative;
+}
+#content .comment img{
+	position: absolute;
+	left:  -70px;
+}
 .widget_wpsc_shopping_cart a{color:#ff4a4b;}
 .products-list .wpsc_buy_button_container{float:none !important;}
 .wpsc_buy_button{

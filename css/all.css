@@ -29,11 +29,19 @@ table, caption, tbody, tfoot, thead, tr, th, td{
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-#content th, td{
+#content th, #content td{
 	border:1px solid #ccc;
 	padding:3px 7px;
 	text-align:left;
 	vertical-align:top;
+}
+.dark #content .checkout_cart td,
+.dark #content .checkout_cart th{
+	border: 1px solid #544C4C;
+}
+.dark #content .checkout_cart th{
+	background: #2E2929;
+	color: #eee;
 }
 #content th{
 	border-color:#999;
@@ -49,36 +57,6 @@ ul li{list-style-type:none;}
 .alignright {
 	margin:0 0 0 21px!important;
 	float: right!important;
-}
-@font-face {
-	font-family: 'CabinRegular';
-	src: url('../fonts/Cabin-Regular-webfont.eot');
-	src: url('../fonts/Cabin-Regular-webfont.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/Cabin-Regular-webfont.woff') format('woff'),
-		url('../fonts/Cabin-Regular-webfont.ttf') format('truetype'),
-		url('../fonts/Cabin-Regular-webfont.svg#CabinRegular') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'CabinSemiBold';
-	src: url('../fonts/Cabin-SemiBold-webfont.eot');
-	src: url('../fonts/Cabin-SemiBold-webfont.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/Cabin-SemiBold-webfont.woff') format('woff'),
-		url('../fonts/Cabin-SemiBold-webfont.ttf') format('truetype'),
-		url('../fonts/Cabin-SemiBold-webfont.svg#CabinSemiBold') format('svg');
-	font-weight: normal;
-	font-style: normal;
-}
-@font-face {
-	font-family: 'CabinBold';
-	src: url('../fonts/Cabin-Bold-webfont.eot');
-	src: url('../fonts/Cabin-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/Cabin-Bold-webfont.woff') format('woff'),
-		url('../fonts/Cabin-Bold-webfont.ttf') format('truetype'),
-		url('../fonts/Cabin-Bold-webfont.svg#CabinBold') format('svg');
-	font-weight: normal;
-	font-style: normal;
 }
 body{
 	margin:0;
@@ -473,6 +451,10 @@ blockquote  cite{
 	padding:7px 23px 8px 15px;
 	background: transparent url(../images/arrow_black.png) 100% 18px no-repeat;
 }
+.dark #header div > ul .drop-dawn a{
+	padding:7px 23px 8px 15px;
+	background: transparent url(../images/arrow_white.png) 100% 18px no-repeat;
+}
 .dark #header div > ul li a{color:#cdcfca;}
 #header div > ul>li:hover>a{
 	-webkit-border-radius: 5px;
@@ -536,7 +518,12 @@ blockquote  cite{
 	border-top:1px solid #f4c32f;
 	background:#f4c32f;
 }
-#header div > ul li ul .drop-dawn:hover a{
+#header div .sub-menu .drop-dawn a{
+	background-image: url(../images/arrow-nav.png) !important;
+	background-repeat: no-repeat !important;
+	background-position: 100% 50% !important;
+}
+#header div .sub-menu .drop-dawn:hover a{
 	background:#fff url(../images/arrow-nav.png) no-repeat 100% 50%!important;
 	text-decoration:none;
 	color:#cc3b3b!important;
@@ -738,9 +725,12 @@ blockquote  cite{
 	margin-right:21px;
 }
 #content .products-list li{
-	margin-right:18px;
-	width:220px;
+	width: 185px;
 	padding-bottom:59px;
+}
+.home #content .products-list li{
+	width: 220px;
+	margin-right:18px;
 }
 #main .products-list li h3{
 	font:14px/16px CabinSemiBold, Arial, sans-serif;
@@ -1145,13 +1135,9 @@ blockquote  cite{
 }
 #sidebar .footer-form{
 	right:2px;
-	margin-top:-6px;
-	border-top: 1px solid #e4e5e3;
-	padding:26px 0 0;
+	padding:0;
 }
-#sidebar .footer-form{
-	border-top: 1px solid #666;
-}
+
 #sidebar .cart-widget+.footer-form{
 	margin:0;
 	padding:29px 0 0;
@@ -1187,6 +1173,9 @@ blockquote  cite{
 	color:#656261;
 	font-size:14px;
 }
+.input-holder input:focus{
+	outline: none;
+}
 #sidebar .input-holder input{
 	font-weight:bold;
 	color:#cdcfca;
@@ -1215,7 +1204,7 @@ blockquote  cite{
 	float:left;
 	margin:0 0 0 10px;
  }
-  .block .social-networks li:first-child{margin:0;}
+ .block .social-networks li:first-child{margin:0;}
  .block .social-networks li a{
 	text-indent:-9999px;
 	overflow:hidden;
@@ -1338,7 +1327,7 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 #content .post .text h2 a{color:#3a3434;}
 .dark #content .post .text h2 a{color:#e9ebe6;}
 #content .paging-holder{
-	width:602px;
+	width:auto;
 	padding:14px 0 10px 0;
 	margin:0;
 	overflow:hidden;
@@ -1420,12 +1409,12 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 	float:right;
 }
 #sidebar .sb-widget{
-	width:100%;
-	padding:25px 0;
 	color:#81827f;
 	font:14px/20px CabinRegular, Arial, sans-serif;
 	overflow:hidden;
 	border-top:1px solid #e4e5e3;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 .dark #sidebar .sb-widget{
 	color:#cdcfca;

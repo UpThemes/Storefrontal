@@ -223,7 +223,7 @@ $image_width = get_option('product_image_width');
 		<div class="paging">
 			<div class="paging-holder">
 				<div class="paging-frame">
-				<?php custom_wpsc_pagination(); ?>
+				<?php storefrontal_wpsc_pagination(); ?>
 				</div>
 			</div>
 		</div>

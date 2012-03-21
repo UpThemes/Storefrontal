@@ -1,5 +1,23 @@
 <?php
 
+/*
+ * Assign theme folder name that you want to get information.
+ * make sure theme exist in wp-content/themes/ folder.
+ */
+
+$theme_name = 'storefrontal'; 
+
+/*
+* Do not use get_stylesheet_uri() as $theme_filename,
+* it will result in PHP fopen error if allow_url_fopen is set to Off in php.ini,
+* which is what most shared hosting does. You can use get_stylesheet_directory()
+* or get_template_directory() though, because they return local paths.
+*/
+
+$theme_data = get_theme_data( get_theme_root() . '/' . $theme_name . '/style.css' );
+
+define('THEME_VERSION',$theme_data['Version']);
+
 // Load UpThemes Framework
 require_once( get_template_directory().'/admin/admin.php' );
 
@@ -20,9 +38,9 @@ require_once( get_template_directory().'/library/dashboard.php' );
 // Theme Options
 require_once( get_template_directory().'/theme-options/colors-and-images.php' );
 
-add_action("init", "product_thumbnails_init");
+add_action("init", "storefrontal_product_thumbnails_init");
 
-function product_thumbnails_init() {
+function storefrontal_product_thumbnails_init() {
 	add_post_type_support( "wpsc-product", "thumbnail" );
 }
 
@@ -116,6 +134,31 @@ function storefrontal_init(){
 
 add_action("init","storefrontal_init",400);
 
+function storefrontal_styles(){
+
+	$up_options = upfw_get_options();
+
+	wp_enqueue_style('style',get_template_directory_uri() . "/style.css", false, THEME_VERSION, 'all');
+
+	if( $up_options['disable_custom_fonts'] == false )
+		wp_enqueue_style('form',get_template_directory_uri() . "/css/fonts.css", array('style'), THEME_VERSION, 'all');
+
+	wp_enqueue_style('all',get_template_directory_uri() . "/css/all.css", array('style'), THEME_VERSION, 'all');
+	wp_enqueue_style('print',get_template_directory_uri() . "/css/print.css", array('style'), THEME_VERSION, 'print');
+	wp_enqueue_style('form',get_template_directory_uri() . "/css/form.css", array('style'), THEME_VERSION, 'all');
+
+}
+
+add_action('wp_enqueue_scripts','storefrontal_styles');
+
+function storefrontal_scripts(){
+
+	wp_enqueue_script("master",get_template_directory_uri() . "/js/jquery.master.js", false, THEME_VERSION, 'all');
+
+}
+
+add_action('wp_enqueue_scripts','storefrontal_scripts');
+
 function storefrontal_header_image_style(){
 	echo "<style type='text/css'>";
 	echo "#logo a{";
@@ -196,7 +239,7 @@ foreach ( $filters as $filter ) {
     remove_filter($filter, 'wp_filter_kses');
 }
 
-function getVimeoInfo($id) {
+function storefrontal_get_vimeo_info($id) {
 	if (!function_exists('curl_init')) die('CURL is not installed!');
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, "http://vimeo.com/api/v2/video/$id.php");
@@ -209,7 +252,7 @@ function getVimeoInfo($id) {
 	return $output;
 }
 
-function getParameter($url, $name) {
+function storefrontal_get_parameter($url, $name) {
     $urlparts = explode('?', $url);
     if (count($urlparts) > 1) {
         $parameters = explode('&', $urlparts[1]);
@@ -223,21 +266,21 @@ function getParameter($url, $name) {
     return null;
 }
 
-function getVimeoID($video_url){
+function storefrontal_get_vimeo_id($video_url){
 	preg_match('/vimeo\.com\/([0-9]{1,10})/', $video_url, $match);
 	return $match[1];
 }
 
-function getThumbnailVideo($video_id, $website){
+function storefrontal_get_thumbnail_video($video_id, $website){
 	if(substr_count($website, 'vimeo')){
-		$video_info = getVimeoInfo($video_id);
+		$video_info = storefrontal_get_vimeo_info($video_id);
 		echo '<img height="145" width="260" src="'.$video_info['thumbnail_small'].'" />';
 	} elseif(substr_count($website, 'youtube')){
 		echo '<img height="145" width="260" src="http://img.youtube.com/vi/'.$video_id.'/0.jpg" />';
 	}
 }
 
-function get_audio_files($postid){
+function storefrontal_get_audio_files($postid){
 	$attachment = get_children(array(
 					'post_parent' => $postid,
 					'post_type' => 'attachment'));
@@ -252,7 +295,7 @@ function get_audio_files($postid){
 	else return $audio_files;
 }
 
-function the_404_content(){ ?>
+function storefrontal_the_404_content(){ ?>
 	<h2><?php _e("Not Found","storefrontal"); ?></h2>
 	<p><?php _e("Sorry, but you are looking for something that isn't here.","storefrontal"); ?></p> <?php
 	if( is_search() )
@@ -260,7 +303,7 @@ function the_404_content(){ ?>
 	
 }
 
-function custom_wpsc_pagination($totalpages = '', $per_page = '', $current_page = '', $page_link = '') {
+function storefrontal_wpsc_pagination($totalpages = '', $per_page = '', $current_page = '', $page_link = '') {
 	global $wp_query;
 	$num_paged_links = 4; //amount of links to show on either side of current page
 
@@ -426,12 +469,12 @@ function custom_wpsc_pagination($totalpages = '', $per_page = '', $current_page 
 
 function storefrontal_theme_style($classes){
 
-/*
 	global $up_options;
+	$up_options = upfw_get_options();
 
-	if( $up_options->color_scheme )
-		$classes[] = $up_options->color_scheme;
-*/
+	if( $up_options['theme_color_scheme'] )
+		$classes[] = $up_options['theme_color_scheme'];
+
 	return $classes;
 
 }

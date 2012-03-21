@@ -1,18 +1,26 @@
 <?php global $up_options; ?>
+<?php $up_options = upfw_get_options(); ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head profile="http://gmpg.org/xfn/11">
-	<title><?php echo up_title(); ?></title>
+	<title><?php 
+
+	if( class_exists('All_in_One_SEO_Pack') ):
+		wp_title(); 
+	else:
+		if( is_front_page() ) echo get_bloginfo('name') . " / " . get_bloginfo('description'); wp_title('',true,'left'); 
+	endif;
+
+	?></title>
+	
+	<?php 
+	if( $up_options['favicon'] )
+		echo '<link rel="shortcut icon" href="' . $up_options['favicon'] . '">';
+	?>
+	
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<link rel="stylesheet" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/all.css" type="text/css"/>
-	<link rel="stylesheet" media="print" href="<?php echo get_template_directory_uri(); ?>/css/print.css" type="text/css"/>
-	<link rel="stylesheet" media="screen" href="<?php echo get_template_directory_uri(); ?>/css/form.css" type="text/css"/>
-	<link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'/>
-	<link rel="stylesheet" type="text/css" media="all" href="<?php echo get_template_directory_uri(); ?>/style.css"  />
 	<?php if ( is_singular() ) wp_enqueue_script( 'theme-comment-reply', get_template_directory_uri()."/js/comment-reply.js" ); ?>
-	<?php wp_enqueue_script("jquery"); ?>
 	<?php wp_head(); ?>
-	<script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.main.js"></script>
 </head>
 <body <?php body_class(); ?>>
 	<div id="wrapper">

@@ -38,6 +38,9 @@
 	height:100%;
 	background: url(../images/select-left.gif) no-repeat;
 }
+.dark .selectArea .left{
+	background-image: url(../images/select-left-dark.png);
+}
 .selectArea a.selectButton {
 	position: absolute;
 	top: 0;
@@ -47,6 +50,9 @@
 	height:100%;
 	background: url(../images/select-button.gif) no-repeat 100% 0;
 }
+.dark .selectArea a.selectButton{
+	background-image: url(../images/select-button-dark.png);
+}
 .selectArea .center{
 	height: 23px;
 	line-height:20px;
@@ -55,6 +61,10 @@
 	display:block;
 	padding:0 10px;
 	background: url(../images/select-center.gif) repeat-x;
+}
+.dark .selectArea .center{
+	color: #BBB;
+	background-image: url(../images/select-center-dark.png);
 }
 .selectArea .center img {
 	float:left;

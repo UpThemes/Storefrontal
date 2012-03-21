@@ -33,13 +33,13 @@
  */
 
 $thistab = array(
-	"name" => "colors_and_images",
-	"title" => __("Colors and Images","upfw"),
+	"name" => "appearance",
+	"title" => __("Appearance","upfw"),
 	'sections' => array(
-		'color_scheme' => array(
-			'name' => 'color_scheme',
-			'title' => __( 'Color Scheme', 'upfw' ),
-			'description' => __( 'Select your color scheme.','upfw' )
+		'global_appearance' => array(
+			'name' => 'global_appearance',
+			'title' => __( 'Global Appearance', 'upfw' ),
+			'description' => __( 'These settings will affect the entire site.','upfw' )
 		)
 	)
 );
@@ -50,9 +50,9 @@ $options = array(
 		"name" => "theme_color_scheme",
 		"title" => "Theme Color Scheme",
 		'description' => __( 'Display header navigation menu above or below the site title/description?', 'storefrontal' ),
-		'section' => 'color_scheme',
+		'section' => 'global_appearance',
 		'since' => '1.0',
-	    "id" => "color_scheme",
+	    "id" => "global_appearance",
 	    "type" => "select",
 	    "default" => "light",
 	    "valid_options" => array(
@@ -66,14 +66,30 @@ $options = array(
 	    	)
 	    )
 	),
-	'custom_footer_logo' => array(
+	'disable_custom_fonts' => array(
 		'tab' => $thistab['name'],
-		"name" => "custom_footer_logo",
-		"title" => "Custom Footer Logo",
-		'description' => __( 'A custom footer logo for your theme.', 'storefrontal' ),
-		'section' => 'color_scheme',
+		"name" => "disable_custom_fonts",
+		"title" => "Disable Custom Fonts",
+		'description' => __( 'Check this box to disable custom fonts.', 'storefrontal' ),
+		'section' => 'global_appearance',
 		'since' => '1.0',
-	    "id" => "color_scheme",
+	    "id" => "global_appearance",
+	    "type" => "checkbox",
+	    "default" => false,
+	    "valid_options" => array(
+	    	true => array(
+	    		"name" => true
+	    	)
+	    )
+	),
+	'favicon' => array(
+		'tab' => $thistab['name'],
+		"name" => "favicon",
+		"title" => "Favicon",
+		'description' => __( 'Select a 16x16 favicon for your site.', 'storefrontal' ),
+		'section' => 'global_appearance',
+		'since' => '1.0',
+	    "id" => "global_appearance",
 	    "type" => "image"
 	)
 );

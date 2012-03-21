@@ -15,7 +15,7 @@ function theme_comment($comment, $args, $depth) {
 	<li>
 		<div <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
 			<?php echo get_avatar( $comment, 48 ); ?>
-			<p class="meta"><?php comment_date('F d, Y'); ?> at <?php comment_time('g:i a'); ?>, <?php comment_author_link(); ?> said:</p>
+			<p class="comment-meta"><?php comment_date('F d, Y'); ?> at <?php comment_time('g:i a'); ?>, <?php comment_author_link(); ?> said:</p>
 			<?php if ($comment->comment_approved == '0') : ?>
 			<p><?php _e("Your comment is awaiting moderation.","storefrontal"); ?></p>
 			<?php else: ?>
@@ -24,7 +24,7 @@ function theme_comment($comment, $args, $depth) {
 			
 			<?php
 				comment_reply_link(array_merge( $args, array(
-					'reply_text' => __("Reply'","storefrontal"),
+					'reply_text' => __("Reply","storefrontal"),
 					'before' => '<p>',
 					'after' => '</p>',
 					'depth' => $depth,
