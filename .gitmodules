@@ -1,6 +1,3 @@
-[submodule "UpThemes-Framework"]
-	path = UpThemes-Framework
-	url = https://github.com/LiftUX/UpThemes-Framework
 [submodule "admin"]
 	path = admin
 	url = git@github.com:LiftUX/UpThemes-Framework.git

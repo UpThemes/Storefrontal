@@ -239,47 +239,6 @@ foreach ( $filters as $filter ) {
     remove_filter($filter, 'wp_filter_kses');
 }
 
-function storefrontal_get_vimeo_info($id) {
-	if (!function_exists('curl_init')) die('CURL is not installed!');
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL, "http://vimeo.com/api/v2/video/$id.php");
-	curl_setopt($ch, CURLOPT_HEADER, 0);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-	$output = unserialize(curl_exec($ch));
-	$output = $output[0];
-	curl_close($ch);
-	return $output;
-}
-
-function storefrontal_get_parameter($url, $name) {
-    $urlparts = explode('?', $url);
-    if (count($urlparts) > 1) {
-        $parameters = explode('&', $urlparts[1]);
-        for ($i = 0; $i < count($parameters); $i++) {
-            $paramparts = explode('=', $parameters[$i]);
-            if (count($paramparts) > 1 && $paramparts[0] == $name) {
-                return $paramparts[1];
-            }
-        }
-    }
-    return null;
-}
-
-function storefrontal_get_vimeo_id($video_url){
-	preg_match('/vimeo\.com\/([0-9]{1,10})/', $video_url, $match);
-	return $match[1];
-}
-
-function storefrontal_get_thumbnail_video($video_id, $website){
-	if(substr_count($website, 'vimeo')){
-		$video_info = storefrontal_get_vimeo_info($video_id);
-		echo '<img height="145" width="260" src="'.$video_info['thumbnail_small'].'" />';
-	} elseif(substr_count($website, 'youtube')){
-		echo '<img height="145" width="260" src="http://img.youtube.com/vi/'.$video_id.'/0.jpg" />';
-	}
-}
-
 function storefrontal_get_audio_files($postid){
 	$attachment = get_children(array(
 					'post_parent' => $postid,
@@ -465,6 +424,41 @@ function storefrontal_wpsc_pagination($totalpages = '', $per_page = '', $current
 	}
 	// Return the output.
 	echo $output;
+}
+
+function storefrontal_get_parameter($url,$param){
+
+	$url_components = parse_url($url);
+
+	$querystring = $url_components['query'];
+
+ 	parse_str($querystring,$querystring_components);
+
+	return $querystring_components[$param];
+
+}
+
+function storefrontal_get_vimeo_id($url){
+
+	return sscanf(parse_url($url, PHP_URL_PATH), '/%d', $video_id);
+
+}
+
+function storefrontal_get_thumbnail_video($url){
+
+	$permalink = get_permalink();
+
+	if( strpos($url, 'youtube') ){
+		$id = storefrontal_get_parameter($url,'v');
+		$url = "http://img.youtube.com/vi/$id/hqdefault.jpg";
+	} elseif( strpos($url, 'vimeo') ){
+		$id = storefrontal_get_vimeo_id($url);
+		$url = file_get_contents("http://vimeo.com/api/v2/video/$id.php");
+		$url = $url['thumbnail_small'];
+	}
+
+	echo "<a href='$permalink'><img src='$url' style='max-width:100%;height:auto;' alt=''></a>";
+
 }
 
 function storefrontal_theme_style($classes){

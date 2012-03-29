@@ -130,15 +130,7 @@ class WP_Widget_Post_Formats extends WP_Widget {
 				if($video_url):
 			?>
 			<a href="<?php the_permalink(); ?>" class="video-holder">
-			<?php
-				if(strpos($video_url, 'youtube')):
-					$video_id = getParameter($video_url, 'v');
-					getThumbnailVideo($video_id, 'youtube');
-				elseif(strpos($video_url, 'vimeo')):
-					$video_id = getVimeoID($video_url);
-					getThumbnailVideo($video_id, 'vimeo');
-				endif;
-			?>
+			<?php storefrontal_get_thumbnail_video( $video_url ); ?>
 			</a>
 			<?php endif; ?>
 			<span class="comments"><?php comments_popup_link('0 comments', '1 comment', '% comments'); ?></span>
