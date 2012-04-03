@@ -37,7 +37,7 @@
 			<div class="nav-holder">
 				<div class="link-holder">
 					<?php if( function_exists('wpsc_cart_item_count') ): ?>
-					<a href="#" class="cart"><?php _e("Cart","storefrontal"); ?><span><?php printf( _n('%d', '%d', wpsc_cart_item_count(), 'wpsc'), wpsc_cart_item_count() ); ?></span></a>
+					<a href="<?php echo get_option('shopping_cart_url'); ?>"" class="cart"><?php _e("Cart","storefrontal"); ?><span><?php printf( _n('%d', '%d', wpsc_cart_item_count(), 'wpsc'), wpsc_cart_item_count() ); ?></span></a>
 					<?php endif; ?>
 				</div>
 				<?php wp_nav_menu(array('container' => false,
