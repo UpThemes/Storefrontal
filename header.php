@@ -14,8 +14,8 @@
 	?></title>
 	
 	<?php 
-	if( $up_options['favicon'] )
-		echo '<link rel="shortcut icon" href="' . $up_options['favicon'] . '">';
+	if( isset($up_options->favicon ))
+		echo '<link rel="shortcut icon" href="' . $up_options->favicon . '">';
 	?>
 	
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
