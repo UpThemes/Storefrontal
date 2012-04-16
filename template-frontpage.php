@@ -32,7 +32,7 @@ Template Name: Home page
 	<a href="#" class="link-prev"><?php _e("prev","storefrontal"); ?></a>
 	<a href="#" class="link-next"><?php _e("next","storefrontal"); ?></a>
 	<?php else : ?>
-	<?php the_404_content(); ?>
+	<?php storefrontal_the_404_content(); ?>
 	<?php endif; wp_reset_query(); ?>
 </div>
 <?php if( function_exists('wpsc_have_products') ): ?>

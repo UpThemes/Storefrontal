@@ -37,7 +37,7 @@
 	
 	<?php else : ?>
 	<div class="post">
-		<?php the_404_content(); ?>
+		<?php storefrontal_the_404_content(); ?>
 	</div>
 	<?php endif; ?>
 	

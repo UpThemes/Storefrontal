@@ -256,8 +256,7 @@ function storefrontal_get_audio_files($postid){
 function storefrontal_the_404_content(){ ?>
 	<h2><?php _e("Not Found","storefrontal"); ?></h2>
 	<p><?php _e("Sorry, but you are looking for something that isn't here.","storefrontal"); ?></p> <?php
-	if( is_search() )
-		get_search_form();
+	get_search_form();
 	
 }
 

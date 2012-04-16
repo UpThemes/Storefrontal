@@ -16,7 +16,7 @@
 	
 	<?php else : ?>
 
-		<?php the_404_content(); ?>
+		<?php storefrontal_the_404_content(); ?>
 
 	<?php endif; ?>
 	

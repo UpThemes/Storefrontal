@@ -153,6 +153,6 @@
 	<?php endwhile; ?>
 	</ul>
 	<?php else : ?>
-		<?php the_404_content(); ?>
+		<?php storefrontal_the_404_content(); ?>
 	<?php endif; wp_reset_query(); ?>
 </div>
