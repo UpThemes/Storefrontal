@@ -17,7 +17,7 @@
 	
 		$('.wp-post-thumbnail').live('click',function(e){
 			
-			var this_id = $(this).attr('id').match(/\d+$/);
+			var this_id = Number($(this).attr('id').match(/\d+$/));
 			
 			$.getJSON(ajaxurl,{ id : this_id, action : "get_post_thumbnail" },function(data){
 
@@ -25,7 +25,7 @@
 					parent.jQuery("#titlediv").after($slide_container);
 					parent.jQuery("#slide_container").append(parent.jQuery(".show-image"));
 				}
-	
+
 				if( data.img ){
 					parent.jQuery(".show-image").html(data.img);
 					parent.jQuery(".show-image").parents("#slide_container").show();

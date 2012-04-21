@@ -123,6 +123,26 @@ function slides_metabox_output(){
 	
 }
 
+add_action('wp_ajax_get_post_thumbnail','slides_get_post_thumbnail');
+
+function slides_get_post_thumbnail(){
+
+	$id = esc_html($_GET['id']);
+
+	if( $post_thumbnail = wp_get_attachment_image( $id, 'blog' ) ){
+		$success = true;
+	} else
+		$success = false;
+
+	$response = json_encode( array( 'post_id' => $id, 'img' => $post_thumbnail, 'success' => $success ) );
+
+	header( "Content-Type: application/json" );
+	echo $response;
+
+	exit;
+	
+}
+
 function save_slides(){
 
 	global $post;
