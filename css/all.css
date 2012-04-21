@@ -326,23 +326,11 @@ blockquote  cite{
 	margin:56px 0 0 -1px;
 }
 #header .logo a{
-	background:url(../images/logo-storefrontal.png) no-repeat;
-	text-indent:-9999px;
-	overflow:hidden;
-	font-size:0;
-}
-#header .logo a{
-	display:block;
-	height:100%;
 }
 #header .print-logo{
 	position:absolute;
 	left:-9999px;
 }
-.dark #header .logo a{
-	background:url(../images/logo-storefrontal-dark.png) no-repeat;
-}
-
 #header .header-text{
 	float: left;
 	width: 350px;
@@ -588,6 +576,14 @@ blockquote  cite{
 	clear:both;
 	content:'';
 }
+#main .no-carousel{
+	width: 940px;
+	height: 140px;
+	padding-top: 120px;
+	text-align: center;
+	background-color: rgba(255,255,255,0.3);
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
 #main .carousel {
 	margin:0 -44px;
 	padding:0 44px;
@@ -601,14 +597,14 @@ blockquote  cite{
 	height:45px;
 	text-indent:-9999px;
 	overflow:hidden;
+	top:50%;
+	margin-top: -22px;
 }
 #main .carousel .link-prev{
-	top:178px;
 	left:0;
 	background:url(../images/link-prev.png) no-repeat;
 }
 #main .carousel .link-next{
-	top:178px;
 	right:0;
 	background:url(../images/link-next.png) no-repeat;
 }

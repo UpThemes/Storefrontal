@@ -27,7 +27,7 @@
 		<div id="header">
 			<?php if( get_header_image() ): ?>
 				<img class="print-logo" src="<?php header_image(); ?>" width="253" height="57" alt="<?php bloginfo('description') ?>" />
-				<h1 class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
+				<h1 class="logo"><a href="<?php bloginfo('url'); ?>"><img src="<?php header_image(); ?>" width="253" height="57" alt="<?php bloginfo('description') ?>" /></a></h1>
 			<?php else: ?>
 			<div class="header-text">
 				<h1 class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>

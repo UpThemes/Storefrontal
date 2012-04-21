@@ -19,24 +19,27 @@ $theme_data = get_theme_data( get_theme_root() . '/' . $theme_name . '/style.css
 define('THEME_VERSION',$theme_data['Version']);
 
 // Load UpThemes Framework
-require_once( get_template_directory().'/admin/admin.php' );
+include_once( get_template_directory().'/admin/admin.php' );
 
 // Set Up Theme
-require_once( get_template_directory().'/library/theme_setup.php' );
-require_once( get_template_directory().'/library/constants.php' );
+include_once( get_template_directory().'/library/theme_setup.php' );
+include_once( get_template_directory().'/library/constants.php' );
 
 // Homepage Slides
-require_once( get_template_directory().'/library/meta_handler.php' );
-require_once( get_template_directory().'/library/slides.php' );
+include_once( get_template_directory().'/library/meta_handler.php' );
+include_once( get_template_directory().'/library/slides.php' );
 
 // Custom Widgets
-require_once( get_template_directory().'/library/widgets.php' );
+include_once( get_template_directory().'/library/widgets.php' );
 
 // UpThemes Dashboard Widget
-require_once( get_template_directory().'/library/dashboard.php' );
+//include_once( get_template_directory().'/library/dashboard.php' );
+
+// Theme Library
+include_once( get_template_directory() . 'themelib/load.php' );
 
 // Theme Options
-require_once( get_template_directory().'/theme-options/colors-and-images.php' );
+include_once( get_template_directory().'/theme-options/colors-and-images.php' );
 
 add_action("init", "storefrontal_product_thumbnails_init");
 
@@ -98,6 +101,7 @@ if ( function_exists('register_sidebar') ) {
 if ( function_exists( 'add_theme_support' ) ) {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 50, 50, true ); // Normal post thumbnails
+	add_image_size('carousel', 940, 320, true );
 	add_image_size('product-thumbnail', 200, 200, true );
 	add_image_size('cart-thumbnail', 40, 40, true );
 	add_image_size('sigle-product-thumbnail', 270, 268, true );
