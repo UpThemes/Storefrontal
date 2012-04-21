@@ -6,21 +6,21 @@ function storefrontal_get_theme_plugin_list(){
 		'WP-PageNavi' => array(
 			'location' 	=> 'wp-pagenavi/wp-pagenavi.php',
 			'name' 		=> 'WP-PageNavi',
-			'required'	=> true
+			'required'	=> false
 		),
 		'MediaElement.js' => array(
 			'location' 	=> 'media-element-html5-video-and-audio-player/mediaelement-js-wp.php',
 			'name' 		=> 'MediaElement.js',
 			'required'	=> true
 		),
-		'ShareThis' => array(
-			'location' 	=> 'share-this/sharethis.php',
-			'name' 		=> 'ShareThis',
-			'required'	=> true
-		),
 		'Widget Logic' => array(
 			'location' 	=> 'widget-logic/widget_logic.php',
 			'name' 		=> 'Widget Logic',
+			'required'	=> false
+		),
+		'Typecase' => array(
+			'location' 	=> 'typecase/typecase.php',
+			'name' 		=> 'Typecase',
 			'required'	=> false
 		),
 		'WP e-Commerce' => array(
