@@ -132,7 +132,8 @@ blockquote{
 	margin:21px 0 22px;
 	padding:0 39px;
 	color:#3a3434;
-	font:16px/24px CabinRegular, Arial, sans-serif;
+	font-size:16px;
+	line-height: 24px;
 }
 .dark blockquote{color:#fff;}
 blockquote q{
@@ -142,7 +143,8 @@ blockquote q{
 }
 blockquote  cite{
 	margin:0;
-	font:14px/16px CabinBold, Arial, sans-serif;
+	font-size:14px;
+	line-height: 16px;
 	padding:0;
 	text-transform:uppercase;
 	color:#81827f;
@@ -151,7 +153,6 @@ blockquote  cite{
 .dark blockquote  cite{color:#fff;}
 .form-holder{margin:32px 0 0;}
 .form-holder label{
-	font:16px/18px CabinBold, Arial, sans-serif;
 	color:#3a3434;
 	margin:0 0 7px;
 	display:block;
@@ -286,7 +287,7 @@ blockquote  cite{
 }
 .form-holder  .row{
 	width:100%;
-	margin:0 0 34px;
+	margin:0 0 14px;
 	overflow:hidden;
 }
 .form-holder .box-form .row .radio,
@@ -645,14 +646,16 @@ blockquote  cite{
 .carousel .frame ul li .text-holder span{
 	color:#81827f;
 	display:block;
-	font:14px/20px CabinRegular, Arial, sans-serif;
+	font-size:14px;
+	line-height: 20px;
 }
 .carousel .frame ul li .text-holder a{
 	color:#ff4a4b;
 	float:right;
 	margin:22px 0 0;
 	text-transform:uppercase;
-	font:14px/16px CabinSemiBold, Arial, sans-serif;
+	font-size:14px;
+	line-height: 16px;
 }
 .dark .carousel .frame ul li .text-holder a{color:#f4c32f;}
 #main .switcher{
@@ -729,7 +732,8 @@ blockquote  cite{
 	margin-right:18px;
 }
 #main .products-list li h3{
-	font:14px/16px CabinSemiBold, Arial, sans-serif;
+	font-size:14px;
+	line-height: 16px;
 	color:#262626;
 	margin:0 0 7px;
 	text-transform:uppercase;
@@ -789,7 +793,8 @@ blockquote  cite{
 	margin:0 0 4px;
 	text-shadow:1px 1px 0 #fff;
 	text-transform:uppercase;
-	font:14px/16px CabinBold, Arial, sans-serif;
+	font-size:14px;
+	line-height: 16px;
 }
 .dark #main .products-list li .price{
 	text-shadow:none;
@@ -864,12 +869,12 @@ blockquote  cite{
 	background: -ms-linear-gradient(top, rgba(255,87,84,1) 0%,rgba(255,79,76,1) 40%,rgba(255,67,64,1) 59%,rgba(255,65,62,1) 100%);
 	background: linear-gradient(top, rgba(255,87,84,1) 0%,rgba(255,79,76,1) 40%,rgba(255,67,64,1) 59%,rgba(255,65,62,1) 100%);
 	text-align:center;
-	font:14px/16px CabinBold, Arial, sans-serif;
+	font-size:14px;
+	line-height: 16px;
 }
 .btn-add em.plus{
 	font-style:normal;
 	font-weight:bold;
-	font-family:Arial, Helvetica, sans-serif;
 }
 .form-holder .btn-add{
 	margin-top:14px;
@@ -913,7 +918,8 @@ blockquote  cite{
 #main .block-holder .col .widget h3{
 	margin:0 0 13px;
 	color:#ff4a4b;
-	font:18px/20px CabinBold, Arial, sans-serif;
+	font-size:18px;
+	line-height: 20px;
 }
 
 .dark #main .block-holder .col .widget h3{
@@ -932,7 +938,8 @@ blockquote  cite{
 }
 .dark .col .widget .text-block{border-bottom:1px solid #544c4c;}
 .col .widget .text-block span{
-	font:14px/24px CabinRegular, Arial, sans-serif;
+	font-size:14px;
+	line-height: 24px;
 	color:#81827f;
 	display:block;
 	margin:10px 0 5px;
@@ -956,7 +963,8 @@ blockquote  cite{
 	margin:-20px 0 0 -32px;
 }
 .col .widget .comments{
-	font:10px/12px CabinBold, Arial, sans-serif;
+	font-size:10px;
+	line-height: 12px;
 	color:#81827f;
 	text-align:center;
 	text-transform:uppercase;
@@ -965,7 +973,8 @@ blockquote  cite{
 }
 .col .widget blockquote{
 	margin:-6px 0 11px;
-	font:16px/24px CabinRegular, Arial, sans-serif;
+	font-size:16px;
+	line-height: 24px;
 	padding:0;
 	color:#3a3434;
 }
@@ -979,7 +988,6 @@ blockquote  cite{
 	margin:-3px 0 -3px;
 	padding:0;
 	list-style:none;
-	font:16px/18px CabinRegular, Arial, sans-serif;
 }
 .col .widget  .update li{
 	margin:0 0 6px;
@@ -1002,7 +1010,6 @@ blockquote  cite{
 }
 .dark #main .cart-widget h2{color:#e9ebe6;}
 #main .cart-widget h2{
-	font:24px/26px CabinBold, Arial, sans-serif;
 	margin:0 0 17px;
 	color:#3a3434;
 }
@@ -1019,7 +1026,8 @@ blockquote  cite{
 	color:#81827f;
 	margin:0 0 12px;
 	padding:0 0 17px;
-	font:12px/14px CabinRegular, Arial, sans-serif;
+	font-size:12px;
+	line-height: 14px;
 	text-transform:uppercase;
 	background:url(../images/bg-cart.gif) repeat-x 0 100%;
 }
@@ -1039,7 +1047,8 @@ blockquote  cite{
 	padding:7px 0 7px 11px;
 	margin:0 0 12px;
 	text-transform:uppercase;
-	font:14px/16px CabinRegular, Arial, sans-serif;
+	font-size:14px;
+	line-height: 16px;
 }
 .dark .cart-widget .items .heading{
 	background:#3b3535;
@@ -1054,7 +1063,6 @@ blockquote  cite{
 	color:#000;
 	float:right;
 	margin:0 3px 14px 0;
-	font:14px/16px CabinRegular, Arial, sans-serif;
 	text-transform:uppercase;
 }
 .dark .cart-widget .subtotal{color:#cdcfca;}
@@ -1065,7 +1073,6 @@ blockquote  cite{
 }
 .cart-widget .empty{
 	color:#ff4a4b;
-	font:14px/16px CabinRegular, Arial, sans-serif;
 	float:left;
 	text-transform:uppercase;
 }
@@ -1073,7 +1080,6 @@ blockquote  cite{
 .cart-widget .checkout{
 	color:#ff4a4b;
 	margin:0 2px 0 0;
-	font:14px/16px CabinBold, Arial, sans-serif;
 	float:right;
 	text-transform:uppercase;
 	background:url(../images/arrow-2.gif) 100% 5px no-repeat;
@@ -1110,7 +1116,8 @@ blockquote  cite{
 }
 .footer-frame p{margin:0 0 20px;}
 .footer-holder h2{
-	font:24px/26px CabinBold, Arial, sans-serif;
+	font-size:24px;
+	line-height:26px;
 	color:#f1f2f0;
 	margin:0 0 13px;
 }
@@ -1122,7 +1129,8 @@ blockquote  cite{
 	width:300px;
 	float:left;
 	color:#cdcfca;
-	font:14px/20px CabinRegular, Arial, sans-serif;
+	font-size:14px;
+	line-height: 20px;
 }
 .footer-form{
 	margin:16px 0 0 0;
@@ -1214,7 +1222,6 @@ blockquote  cite{
 .block .social-networks .twiter{background:url(../images/ico-tw.png) no-repeat;}
 #content{
 	width:605px;
-	font:14px/20px CabinRegular, Arial, sans-serif;
 	float:left;
 	color:#81827f;
 	margin:-5px 0 0;
@@ -1263,16 +1270,19 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 #content .post .info dt{
 	color:#cdcfca;
 	text-transform:uppercase;
-	font:10px/12px CabinBold, Arial, sans-serif;
+	font-size:10px;
+	line-height: 12px;
 }
 #content .post .info dd{
 	color:#81827f;
 	margin:0 0 10px;
-	font:12px/14px CabinRegular, Arial, sans-serif;
+	font-size:12px;
+	line-height: 14px;
 }
 #content .post .info .date{
 	color:#81827f;
-	font:12px/14px CabinRegular, Arial, sans-serif;
+	font-size:12px;
+	line-height: 14px;
 }
 #content .post .info  a{color:#ff4a4b;}
 .dark #content .post .info  a{color:#f4c32f;}
@@ -1283,7 +1293,8 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 	overflow:hidden;
 	text-align:center;
 	text-transform:uppercase;
-	font:12px/18px CabinBold, Arial, sans-serif;
+	font-size:12px;
+	line-height: 18px;
 }
 #content .post .social-networks li{
 	background:none;
@@ -1299,24 +1310,13 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 	float:left;
 	color:#81827f;
 	width:439px;
-	font:14px/20px CabinRegular, Arial, sans-serif;
+	font-size:14px;
+	line-height: 20px;
 }
 .dark #content .post .text{color:#cdcfca;}
 #content .post .text p{margin:0 0 20px;}
-#content .post .text .more{
-	float:right;
-	margin:2px 0 0 0;
-	color:#ff4a4b;
-	font:14px/16px CabinBold, Arial, sans-serif;
-	background:url(../images/arrow-2.gif) 100% 5px no-repeat;
-	padding:0 10px 0 0;
-}
-.dark #content .post .text .more{
-	color:#f4c32f;
-	background:url(../images/arrow-2-dark.gif) 100% 5px no-repeat;
-}
+
 #content .post .text h2{
-	font:24px/26px CabinBold, Arial, sans-serif;
 	color:#3a3434;
 	margin:0 0 13px;
 }
@@ -1335,7 +1335,6 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 }
 #content .paging-holder .next-link,
 #content .paging-holder .prev-link{
-	font:14px/24px CabinBold, Arial, sans-serif;
 	color:#544c4c;
 	float:left;
 }
@@ -1365,7 +1364,8 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 	padding:0;
 	list-style:none;
 	float:left;
-	font:14px/20px CabinBold, Arial, sans-serif;
+	font-size:14px;
+	line-height: 20px;
 }
 #content .paging li{
 	background-color:#f7faf7;
@@ -1406,7 +1406,6 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 }
 #sidebar .sb-widget{
 	color:#81827f;
-	font:14px/20px CabinRegular, Arial, sans-serif;
 	overflow:hidden;
 	border-top:1px solid #e4e5e3;
 	padding-top: 20px;
@@ -1417,7 +1416,8 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 	border-top:1px solid #544c4c;}
 #sidebar .sb-widget p{margin:0!important;}
 #sidebar .sb-widget h2{
-	font:24px/26px CabinBold, Arial, sans-serif;
+	font-size:24px;
+	line-height: 26px;
 	color:#3a3434;
 	margin:0 0 13px;
 }
@@ -1427,7 +1427,8 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 #sidebar .sb-widget .sb-nav{
 	margin:0 0 0 4px;
 	padding:6px 0 0;
-	font:16px/18px CabinBold, Arial, sans-serif;
+	font-size:16px;
+	line-height: 18px;
 	list-style:none;
 	overflow:hidden;
 }
@@ -1440,7 +1441,8 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 #sidebar .sb-widget .sb-nav li a{color:#ff4a4b;}
 .dark #sidebar .sb-widget .sb-nav li a{color:#f4c32f;}
 #content  h2{
-	font:24px/26px CabinBold, Arial, sans-serif;
+	font-size:24px;
+	line-height: 26px;
 	color:#3a3434;
 	margin:35px 0 13px;
 }
@@ -1473,7 +1475,8 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 	text-transform:uppercase;
 	display:block;
 	margin:0 0 7px;
-	font:18px/20px CabinBold, Arial, sans-serif;
+	font-size:18px;
+	line-height: 20px;
 }
 .dark #content .single-frame  .price{color:#cdcfca;}
 #content .related-block{
@@ -1485,7 +1488,8 @@ box-shadow: 0 1px 2px 1px #d2d2d2;
 	clear:both;
 }
 #content .related-block h3{
-	font:20px/22px CabinBold, Arial, sans-serif;
+	font-size:20px;
+	line-height: 22px;
 	color:#3a3434;
 	margin:0 0 -1px;
 	position:relative;
