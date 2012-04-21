@@ -21,10 +21,6 @@ define('THEME_VERSION',$theme_data['Version']);
 // Load UpThemes Framework
 include_once( get_template_directory().'/admin/admin.php' );
 
-// Set Up Theme
-include_once( get_template_directory().'/library/theme_setup.php' );
-include_once( get_template_directory().'/library/constants.php' );
-
 // Homepage Slides
 include_once( get_template_directory().'/library/meta_handler.php' );
 include_once( get_template_directory().'/library/slides.php' );
@@ -32,11 +28,8 @@ include_once( get_template_directory().'/library/slides.php' );
 // Custom Widgets
 include_once( get_template_directory().'/library/widgets.php' );
 
-// UpThemes Dashboard Widget
-//include_once( get_template_directory().'/library/dashboard.php' );
-
 // Theme Library
-include_once( get_template_directory() . 'themelib/load.php' );
+include_once( get_template_directory() . '/themelib/load.php' );
 
 // Theme Options
 include_once( get_template_directory().'/theme-options/colors-and-images.php' );
@@ -102,6 +95,7 @@ if ( function_exists( 'add_theme_support' ) ) {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 50, 50, true ); // Normal post thumbnails
 	add_image_size('carousel', 940, 320, true );
+	add_image_size('blog', 439, 9999, true );
 	add_image_size('product-thumbnail', 200, 200, true );
 	add_image_size('cart-thumbnail', 40, 40, true );
 	add_image_size('sigle-product-thumbnail', 270, 268, true );
@@ -144,11 +138,12 @@ function storefrontal_styles(){
 
 	wp_enqueue_style('style',get_template_directory_uri() . "/style.css", false, THEME_VERSION, 'all');
 
-	if( $up_options->disable_custom_fonts == false )
+	if( $up_options->disable_custom_fonts == false || class_exists('Typecase') )
   	wp_enqueue_style('fonts',get_template_directory_uri() . "/css/fonts.css", array('style'), THEME_VERSION, 'all');
-  	wp_enqueue_style('all',get_template_directory_uri() . "/css/all.css", array('style'), THEME_VERSION, 'all');
-  	wp_enqueue_style('print',get_template_directory_uri() . "/css/print.css", array('style'), THEME_VERSION, 'print');
-  	wp_enqueue_style('form',get_template_directory_uri() . "/css/form.css", array('style'), THEME_VERSION, 'all');
+
+  wp_enqueue_style('all',get_template_directory_uri() . "/css/all.css", array('style'), THEME_VERSION, 'all');
+	wp_enqueue_style('print',get_template_directory_uri() . "/css/print.css", array('style'), THEME_VERSION, 'print');
+	wp_enqueue_style('form',get_template_directory_uri() . "/css/form.css", array('style'), THEME_VERSION, 'all');
 
 }
 
