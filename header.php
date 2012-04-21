@@ -1,26 +1,18 @@
-<?php global $up_options; ?>
 <?php $up_options = upfw_get_options(); ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head profile="http://gmpg.org/xfn/11">
-	<title><?php 
+	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+	<title><?php wp_title(); ?></title>
 
-	if( class_exists('All_in_One_SEO_Pack') ):
-		wp_title(); 
-	else:
-		if( is_front_page() ) echo get_bloginfo('name') . " / " . get_bloginfo('description'); wp_title('',true,'left'); 
-	endif;
-
-	?></title>
-	
-	<?php 
+	<?php
 	if( isset($up_options->favicon ))
 		echo '<link rel="shortcut icon" href="' . $up_options->favicon . '">';
-	?>
 	
-	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<?php if ( is_singular() ) wp_enqueue_script( 'theme-comment-reply', get_template_directory_uri()."/js/comment-reply.js" ); ?>
-	<?php wp_head(); ?>
+	if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' );
+
+	wp_head(); ?>
+
 </head>
 <body <?php body_class(); ?>>
 	<div id="wrapper">
