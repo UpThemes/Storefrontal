@@ -12,7 +12,7 @@ Template Name: Home page
 		<?php $cnt = 0; ?>
 		<?php while (have_posts()) : the_post(); ?>
 			<li>
-				<?php the_post_thumbnail('full'); ?>
+				<?php the_post_thumbnail('carousel'); ?>
 				<div class="text-holder">
 					<h2><?php the_title(); ?></h2>
 					<span><?php echo get_post_meta(get_the_ID(),'slide_blurb',true); ?></span>
@@ -32,7 +32,12 @@ Template Name: Home page
 	<a href="#" class="link-prev"><?php _e("prev","storefrontal"); ?></a>
 	<a href="#" class="link-next"><?php _e("next","storefrontal"); ?></a>
 	<?php else : ?>
-	<?php storefrontal_the_404_content(); ?>
+	<div class="no-carousel">
+		<?php 
+		$url = admin_url('post-new.php?post_type=slide');
+		echo sprintf( __("No carousel images added. Please <a href='%s'>add a new carousel item</a> to see a carousel here.","storefrontal"), $url);
+		?>
+	</div>
 	<?php endif; wp_reset_query(); ?>
 </div>
 <?php if( function_exists('wpsc_have_products') ): ?>
