@@ -3,7 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-	<title><?php wp_title(); ?></title>
+
+	<title><?php 
+
+	if( class_exists('All_in_One_SEO_Pack') ):
+		wp_title(); 
+	else:
+		if( is_front_page() ) 
+			echo get_bloginfo('name') . " / " . get_bloginfo('description'); 
+		wp_title('',true,'left'); 
+	endif;
+
+	?></title>
 
 	<?php
 	if( isset($up_options->favicon ))
