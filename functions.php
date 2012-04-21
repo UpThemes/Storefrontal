@@ -136,14 +136,11 @@ function storefrontal_styles(){
 
 	$up_options = upfw_get_options();
 
-	wp_enqueue_style('style',get_template_directory_uri() . "/style.css", false, THEME_VERSION, 'all');
+		if( $up_options->disable_custom_fonts['checked'] != 1 || !class_exists('Typecase') )
+  	wp_enqueue_style('fonts',get_template_directory_uri() . "/css/fonts.css", false, THEME_VERSION, 'all');
 
-	if( $up_options->disable_custom_fonts == false || class_exists('Typecase') )
-  	wp_enqueue_style('fonts',get_template_directory_uri() . "/css/fonts.css", array('style'), THEME_VERSION, 'all');
-
-  wp_enqueue_style('all',get_template_directory_uri() . "/css/all.css", array('style'), THEME_VERSION, 'all');
-	wp_enqueue_style('print',get_template_directory_uri() . "/css/print.css", array('style'), THEME_VERSION, 'print');
-	wp_enqueue_style('form',get_template_directory_uri() . "/css/form.css", array('style'), THEME_VERSION, 'all');
+  wp_enqueue_style('all',get_template_directory_uri() . "/css/screen.css", false, THEME_VERSION, 'all');
+	wp_enqueue_style('print',get_template_directory_uri() . "/css/print.css", false, THEME_VERSION, 'print');
 
 }
 

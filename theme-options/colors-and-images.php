@@ -77,8 +77,8 @@ $options = array(
 	    "type" => "checkbox",
 	    "default" => false,
 	    "valid_options" => array(
-	    	true => array(
-	    		"name" => true
+	    	'checked' => array(
+	    		"name" => 'checked'
 	    	)
 	    )
 	),
