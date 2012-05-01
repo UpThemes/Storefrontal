@@ -94,7 +94,7 @@ if ( function_exists('register_sidebar') ) {
 if ( function_exists( 'add_theme_support' ) ) {
 	add_theme_support( 'post-thumbnails' );
 	set_post_thumbnail_size( 50, 50, true ); // Normal post thumbnails
-	add_image_size('carousel', 940, 320, true );
+	add_image_size('carousel', 940, 400, true );
 	add_image_size('blog', 439, 9999, true );
 	add_image_size('product-thumbnail', 200, 200, true );
 	add_image_size('cart-thumbnail', 40, 40, true );
