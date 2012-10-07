@@ -1,5 +1,5 @@
-[submodule "admin"]
-	path = admin
+[submodule "options"]
+	path = options
 	url = git@github.com:LiftUX/UpThemes-Framework.git
 [submodule "themelib"]
 	path = themelib
