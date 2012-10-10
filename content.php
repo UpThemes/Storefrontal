@@ -25,9 +25,12 @@
 
 		<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php _e("Permanent Link to","storefrontal"); ?> <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 
-		<?php the_content(); ?>
+    <div class="post_content">
+  		<?php the_content(); ?>
+		</div>
 
-		<?php comments_template(); ?>
+    <?php comments_template(); ?>
 
 	</div>
+
 </div>

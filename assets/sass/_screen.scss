@@ -45,19 +45,6 @@ h5,h6 {
   }
 }
 
-ul li, 
-ol li {
-  list-style-position: none;
-}
-
-ul li {
-  list-style-type: none; 
-}
-
-img {
-  border-style: none;
-}
-
 a {
   text-decoration: none;
   color: #ff4a4b;
@@ -66,24 +53,13 @@ a {
   }
 }
 
-input, textarea, select {
-  font: 100% "Trebuchet MS", Arial, Helvetica, sans-serif;
-  vertical-align: middle;
-}
-
-form, fieldset {
-  margin: 0;
-  padding: 0;
-  border-style: none; 
-}
-
 img{
   max-width: 100%;
   height: auto;
 }
 
 p {
-  margin: 0 0 20px;
+  margin: 0 0 1em;
 }
 
 blockquote {
@@ -334,6 +310,10 @@ blockquote {
 /* @end */
 
 /* @group Comments */
+
+.row{
+  margin-bottom: 1em;
+}
 
 .commentlist {
   margin: 0;
@@ -1100,6 +1080,11 @@ textarea{
     padding: 0;
     border: 0;
   }
+
+  .widget_wpsc_shopping_cart{
+    padding-top: 20px !important;
+  }
+
 }
 
 .dark #sidebar {
@@ -1350,6 +1335,10 @@ textarea{
       font-size: 14px;
       line-height: 20px; 
     }
+
+    .post_content{
+      margin-bottom: 4em;
+    }
   }
 
   .post .text {
@@ -1597,7 +1586,7 @@ textarea{
         display: block;
         margin: 0 0 8px; 
       }
-    
+
       blockquote {
         margin: -6px 0 11px;
         font-size: 16px;

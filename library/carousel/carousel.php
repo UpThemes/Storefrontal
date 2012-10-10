@@ -232,7 +232,7 @@ if( have_posts() ):
   		$post_thumbnail
   		<div class="text-holder">
   			<h2>$title</h2>
-  			<span>$description</span>
+  			<p>$description</p>
   			<a href="$link">$text</a>
   		</div>
   	</li>

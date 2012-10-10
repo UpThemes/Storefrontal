@@ -1,3 +1,11 @@
+@media ( max-width: 960px ){
+
+  .flexslider ul li .text-holder{
+    top: 20%;
+  }
+
+}
+
 @media ( max-width:640px ){
 
   h1{
@@ -38,6 +46,38 @@
   #sidebar{
     width: auto;
     text-align: center;
+  }
+
+  .wpsc_buy_button, 
+  .single_product_display form.product_form input, 
+  #content .single_product_display form.product_form input{
+    font-size: .8em;
+  }
+
+  .products-list > div,
+  .block-holder{
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+
+  .flexslider ul li .text-holder{
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: auto;
+    text-align: center;
+
+    h2{
+      font-size: 1.5em;
+      margin-bottom: 0;
+    }
+
+    p,a{
+      float: none;
+      display: block;
+    }
   }
 
   #footer{

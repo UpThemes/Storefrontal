@@ -42,7 +42,7 @@ function theme_comment($comment, $args, $depth) {
 
 <div class="section comments" id="comments">
 
-	<h2><?php comments_number( __("No Responses","storefrontal"), __("One Response","storefrontal"), __("% Responses","storefrontal") ); ?> <?php _e("to","storefrontal"); ?> &#8220;<?php the_title(); ?>&#8221;</h2>
+	<h4><?php comments_number( __("No Responses","storefrontal"), __("One Response","storefrontal"), __("% Responses","storefrontal") ); ?> <?php _e("to","storefrontal"); ?> &#8220;<?php the_title(); ?>&#8221;</h4>
 
 	<ol class="commentlist">
 		<?php wp_list_comments(array(
@@ -76,7 +76,7 @@ function theme_comment($comment, $args, $depth) {
 
 <div id="respond">
 	<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" name="commentform" id="commentform" class="form-holder">
-		<h2><?php comment_form_title( __("Leave a Reply","storefrontal"), __("Leave a Reply to %s","storefrontal") ); ?></h2>
+		<h4><?php comment_form_title( __("Leave a Reply","storefrontal"), __("Leave a Reply to %s","storefrontal") ); ?></h4>
 		<div class="cancel-comment-reply"><?php cancel_comment_reply_link(); ?></div>
 	
 		<?php if ( get_option('comment_registration') && !is_user_logged_in() ) : ?>

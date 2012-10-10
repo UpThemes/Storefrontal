@@ -253,8 +253,9 @@
   background: url(images/arrow-2-dark.gif) 100% 5px no-repeat;
 }
 
-#cart-widget-links{
-  padding: 18px 0 !important;
+.shopping-cart-wrapper .checkout-shipping, .shopping-cart-wrapper .checkout-tax, 
+.widget_wpsc_shopping_cart #cart-widget-links{
+  padding: 18px 0 0;
 }
 
 .shopping-cart-wrapper a.emptycart:link, .shopping-cart-wrapper a.emptycart:visited{
