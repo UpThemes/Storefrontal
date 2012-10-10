@@ -1,0 +1,55 @@
+@media ( max-width:640px ){
+
+  h1{
+    font-size: 1.4em;
+    line-height: 1.2em;
+    margin-bottom: 1em;
+  }
+
+  h2{
+    font-size: 1.2em;
+    line-height: 1.2em;
+    margin-bottom: 1em;
+  }
+  
+  h3{
+    font-size: 1.1em;
+    line-height: 1.2em;
+    margin-bottom: 1em;
+  }
+  
+  h4,h5,h6{
+    font-size: 1em;
+    line-height: 1.2em;
+    margin-bottom: 1em;
+  }
+
+  #content,
+  #sidebar,
+  #footer .widget{
+    float: none;
+    clear: both;
+  }
+
+  #content{
+    width: auto;
+  }
+  
+  #sidebar{
+    width: auto;
+    text-align: center;
+  }
+
+  #footer{
+    .block-holder{
+      width: auto;
+      float: none;
+    }
+
+    .widget{
+      width: auto;
+      margin: 0 20px 20px;
+    }
+  }
+
+}

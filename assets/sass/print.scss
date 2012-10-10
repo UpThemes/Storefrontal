@@ -1,0 +1,253 @@
+@import 'fonts';
+
+.alignleft {
+  margin: 0 21px 0 0!important;
+  float: left!important; }
+
+.alignright {
+  margin: 0 0 0 21px!important;
+  float: right!important; }
+
+body {
+  margin: 0;
+  color: #000;
+  font: 14px / 20px "Times New Roman", Times, serif;
+  width: 100%; }
+
+img {
+  border-style: none; }
+
+a {
+  text-decoration: none;
+  color: #000;
+  &:hover {
+    text-decoration: underline; } }
+
+input, textarea, select {
+  font: 100% "Trebuchet MS", Arial, Helvetica, sans-serif;
+  vertical-align: middle; }
+
+form, fieldset {
+  margin: 0;
+  padding: 0;
+  border-style: none; }
+
+h2 {
+  color: #000;
+  margin: 0;
+  font: 24px / 26px "Times New Roman", Times, serif; }
+
+h3 {
+  color: #000;
+  margin: 0 0 15px;
+  font: 20px / 22px "Times New Roman", Times, serif; }
+
+h4 {
+  color: #000;
+  margin: 0 0 14px;
+  font: 16px / 18px "Times New Roman", Times, serif; }
+
+p {
+  margin: 0 0 20px!important; }
+
+.example-list {
+  margin: 42px 0 16px;
+  padding: 0 0 0 19px;
+  list-style: none;
+  overflow: hidden;
+  color: #81827f;
+  font: 14px / 20px 'Cabin', Arial, sans-serif;
+  li {
+    margin: 0 0 4px 0;
+    padding: 0 0 0 14px;
+    background: url(../images/separator-sb-nav.png) no-repeat 0 8px;
+    a {
+      color: #000; } } }
+
+.example-list-ol {
+  margin: 24px 0 20px;
+  padding: 0 0 0 36px;
+  overflow: hidden;
+  color: #000;
+  font: 14px / 20px 'Cabin', Arial, sans-serif;
+  li {
+    padding: 0 0 0 3px;
+    margin: 0 0 4px;
+    a {
+      color: #000; } } }
+
+blockquote {
+  margin: 21px 0 22px;
+  padding: 0 39px;
+  color: #3a3434;
+  font: 16px / 24px 'Cabin', Arial, sans-serif;
+  q {
+    quotes: none;
+    margin: 0 0 10px;
+    display: block; }
+  cite {
+    margin: 0;
+    font: 14px / 16px "Times New Roman", Times, serif;
+    padding: 0;
+    text-transform: uppercase;
+    color: #000;
+    display: block; } }
+
+.form-holder {
+  display: none; }
+
+#wrapper {
+  width: 100%;
+  overflow: hidden; }
+
+#header {
+  width: 100%;
+  padding: 0 0 25px;
+  border-bottom: 1px solid #e4e5e3;
+  position: relative;
+  &:after {
+    display: block;
+    clear: both;
+    content: ''; }
+  .logo, .nav-holder {
+    display: none; } }
+
+#main {
+  width: 100%;
+  position: relative;
+  &:after {
+    display: block;
+    clear: both;
+    content: ''; }
+  .carousel {
+    display: none; }
+  .products-block {
+    overflow: hidden;
+    width: 100%; }
+  .products-list {
+    margin: 37px 0 0;
+    padding: 0 0 32px;
+    list-style: none;
+    overflow: hidden;
+    width: 100%; } }
+
+*+html #main .products-list li {
+  display: inline-block;
+  margin-right: 19px; }
+
+#main .products-list li {
+  display: inline-block;
+  padding: 0 0 8px;
+  text-align: center;
+  margin: 0 17px 0 0;
+  h3 {
+    font: bold 14px / 16px 'Cabin', Arial, sans-serif;
+    color: #262626;
+    margin: 0 0 7px;
+    text-transform: uppercase;
+    a {
+      color: #262626; } } }
+
+.img-holder {
+  margin: 0 10px 12px;
+  padding: 3px;
+  float: left; }
+
+.products-list .img-holder {
+  margin: 0 0 12px;
+  padding: 10px; }
+
+#main .products-list li .price {
+  display: block;
+  color: #81827f;
+  margin: 0 0 5px;
+  text-transform: uppercase;
+  font: bold 14px / 16px 'Cabin', Arial, sans-serif; }
+
+.btn-add, #main .block-holder, #footer {
+  display: none; }
+
+#content {
+  width: 100%;
+  font: 14px / 20px "Times New Roman", Times, serif;
+  color: #000;
+  margin: -5px 0 0;
+  &:after {
+    content: '';
+    display: block;
+    clear: both; }
+  .post {
+    width: 100%;
+    overflow: hidden;
+    margin: 0 0 10px;
+    padding: 10px 0 0 0;
+    &:first-child {
+      border: none; }
+    .info {
+      display: none; }
+    .social-networks {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      overflow: hidden;
+      text-align: center;
+      text-transform: uppercase;
+      font: bold 12px / 18px 'Cabin', Arial, sans-serif;
+      li {
+        margin: 0 0 5px;
+        a {
+          background: url(../images/ico-share.png) no-repeat;
+          padding: 2px 0 2px 22px;
+          color: #ff4a4b; } } }
+    .text {
+      color: #000;
+      width: 100%;
+      font: 14px / 20px "Times New Roman", Times, serif;
+      p {
+        margin: 0 0 20px; }
+      .more {
+        display: none; }
+      h2 a {
+        color: #3a3434; } } }
+  .paging-holder {
+    display: none; } }
+
+#sidebar {
+  display: none; }
+
+#content {
+  h2 {
+    font: bold 24px / 26px 'Cabin', Arial, sans-serif;
+    color: #3a3434;
+    margin: 35px 0 13px;
+    a {
+      color: #3a3434; } }
+  p {
+    margin: 0 0 54px; }
+  .single-holder {
+    width: 100%;
+    border-bottom: 1px solid #e4e5e3;
+    overflow: hidden;
+    margin: 0 0 24px; }
+  .single-frame {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0 19px;
+    margin: 28px 0 0;
+    .img-holder {
+      margin: 0 0 12px;
+      padding: 10px; }
+    .text-holder {
+      width: 295px;
+      margin: -5px 0 0 22px;
+      float: left; }
+    .price {
+      color: #3a3434;
+      text-transform: uppercase;
+      display: block;
+      margin: 0 0 11px;
+      font: bold 18px / 20px 'Cabin', Arial, sans-serif; } }
+  .related-block h3 {
+    font: bold 20px / 22px 'Cabin', Arial, sans-serif;
+    color: #3a3434;
+    margin: 0 0 -3px; } }

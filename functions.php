@@ -14,19 +14,18 @@ $theme_name = 'storefrontal';
 * or get_template_directory() though, because they return local paths.
 */
 
+// Theme Version
 $theme_data = get_theme_data( get_theme_root() . '/' . $theme_name . '/style.css' );
-
 define('THEME_VERSION',$theme_data['Version']);
 
 // Load UpThemes Framework
-include_once( get_template_directory().'/admin/admin.php' );
-
-// Homepage Slides
-include_once( get_template_directory().'/library/meta_handler.php' );
-include_once( get_template_directory().'/library/slides.php' );
+include_once( get_template_directory().'/options/options.php' );
 
 // Custom Widgets
 include_once( get_template_directory().'/library/widgets.php' );
+
+// Slider
+include_once( get_template_directory().'/library/carousel/carousel.php' );
 
 // Theme Library
 include_once( get_template_directory() . '/themelib/load.php' );
@@ -34,82 +33,33 @@ include_once( get_template_directory() . '/themelib/load.php' );
 // Theme Options
 include_once( get_template_directory().'/theme-options/colors-and-images.php' );
 
-add_action("init", "storefrontal_product_thumbnails_init");
-
-function storefrontal_product_thumbnails_init() {
-	add_post_type_support( "wpsc-product", "thumbnail" );
-}
-
-if ( function_exists('register_sidebar') ) {
-	register_sidebar(array(
-		'id' => 'default-sidebar',
-		'name' => 'Default Sidebar',
-		'before_widget' => '<div class="sb-widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h2>',
-		'after_title' => '</h2>'
-	));
-	register_sidebar(array(
-		'id' => 'footer-1',
-		'name' => 'Footer 1 (left side)',
-		'before_widget' => '<div class="block frame">',
-		'after_widget' => '</div>',
-		'before_title' => '<h2>',
-		'after_title' => '</h2>'
-	));
-	register_sidebar(array(
-		'id' => 'footer-2',
-		'name' => 'Footer 2 (right side)',
-		'before_widget' => '<div class="block">',
-		'after_widget' => '</div>',
-		'before_title' => '<h2>',
-		'after_title' => '</h2>'
-	));
-	register_sidebar(array(
-		'id' => 'home-1',
-		'name' => 'Column 1 (homepage)',
-		'before_widget' => '<div class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3>',
-		'after_title' => '</h3>'
-	));
-	register_sidebar(array(
-		'id' => 'home-2',
-		'name' => 'Column 2 (homepage)',
-		'before_widget' => '<div class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3>',
-		'after_title' => '</h3>'
-	));
-	register_sidebar(array(
-		'id' => 'home-3',
-		'name' => 'Column 3 (homepage)',
-		'before_widget' => '<div class="widget %2$s">',
-		'after_widget' => '</div>',
-		'before_title' => '<h3>',
-		'after_title' => '</h3>'
-	));
-}
-
-if ( function_exists( 'add_theme_support' ) ) {
-	add_theme_support( 'post-thumbnails' );
-	set_post_thumbnail_size( 50, 50, true ); // Normal post thumbnails
-	add_image_size('carousel', 940, 400, true );
-	add_image_size('blog', 439, 9999, true );
-	add_image_size('product-thumbnail', 200, 200, true );
-	add_image_size('cart-thumbnail', 40, 40, true );
-	add_image_size('sigle-product-thumbnail', 270, 268, true );
-	add_image_size('small-post-thumbnail', 136, 96, true );
-	add_image_size('widget-thumbnail', 260, 9999);
-}
-
-register_nav_menus( array(
-	'primary' => __( 'Primary Navigation', 'base' ),
-) );
-
-add_theme_support( 'post-formats', array( 'link', 'quote', 'image', 'video', 'audio' ) );
-
+/**
+ * Theme initialization.
+ *
+ * Sets up theme-specific functionality.
+ *
+ * @since Storefrontal 1.0
+ */
 function storefrontal_init(){
+
+	add_post_type_support( "wpsc-product", "thumbnail" );
+
+  if ( function_exists( 'add_theme_support' ) ) {
+  	add_theme_support( 'post-thumbnails' );
+  	set_post_thumbnail_size( 50, 50, true ); // Normal post thumbnails
+  	add_image_size('blog', 439, 9999, true );
+  	add_image_size('product-thumbnail', 200, 200, true );
+  	add_image_size('cart-thumbnail', 40, 40, true );
+  	add_image_size('sigle-product-thumbnail', 270, 268, true );
+  	add_image_size('small-post-thumbnail', 136, 96, true );
+  	add_image_size('widget-thumbnail', 260, 9999);
+  }
+  
+  register_nav_menus( array(
+  	'primary' => __( 'Primary Navigation', 'base' ),
+  ) );
+  
+  add_theme_support( 'post-formats', array( 'link', 'quote', 'image', 'video', 'audio' ) );
 
 	if( function_exists('upfw_dbwidget_setup') )
 		add_action('wp_dashboard_setup', 'upfw_dbwidget_setup' );
@@ -132,28 +82,108 @@ function storefrontal_init(){
 
 add_action("init","storefrontal_init",400);
 
-function storefrontal_styles(){
 
+/**
+ * Register sidebars
+ *
+ * This function creates all the sidebars for our theme.
+ *
+ * @since Storefrontal 1.0
+ */
+
+function storefrontal_register_sidebars(){
+  
+  if ( function_exists('register_sidebar') ) {
+  	register_sidebar(array(
+  		'id' => 'default-sidebar',
+  		'name' => 'Default Sidebar',
+  		'before_widget' => '<div class="widget %2$s">',
+  		'after_widget' => '</div>',
+  		'before_title' => '<h4>',
+  		'after_title' => '</h4>'
+  	));
+  	register_sidebar(array(
+  		'id' => 'footer-1',
+  		'name' => 'Footer 1 (left side)',
+  		'before_widget' => '<div class="widget %2$s">',
+  		'after_widget' => '</div>',
+  		'before_title' => '<h4>',
+  		'after_title' => '</h4>'
+  	));
+  register_sidebar(array(
+  	'id' => 'footer-2',
+  	'name' => 'Footer 2 (right side)',
+  	'before_widget' => '<div class="widget %2$s">',
+  	'after_widget' => '</div>',
+  	'before_title' => '<h4>',
+  	'after_title' => '</h4>'
+  ));
+  register_sidebar(array(
+  	'id' => 'footer-3',
+  	'name' => 'Footer 3 (right side)',
+  	'before_widget' => '<div class="widget %2$s">',
+  	'after_widget' => '</div>',
+  	'before_title' => '<h4>',
+  	'after_title' => '</h4>'
+  ));
+  	register_sidebar(array(
+  		'id' => 'home-1',
+  		'name' => 'Column 1 (homepage)',
+  		'before_widget' => '<div class="widget %2$s">',
+  		'after_widget' => '</div>',
+  		'before_title' => '<h4>',
+  		'after_title' => '</h4>'
+  	));
+  	register_sidebar(array(
+  		'id' => 'home-2',
+  		'name' => 'Column 2 (homepage)',
+  		'before_widget' => '<div class="widget %2$s">',
+  		'after_widget' => '</div>',
+  		'before_title' => '<h4>',
+  		'after_title' => '</h4>'
+  	));
+  	register_sidebar(array(
+  		'id' => 'home-3',
+  		'name' => 'Column 3 (homepage)',
+  		'before_widget' => '<div class="widget %2$s">',
+  		'after_widget' => '</div>',
+  		'before_title' => '<h4>',
+  		'after_title' => '</h4>'
+  	));
+  }
+
+}
+
+add_action("widgets_init","storefrontal_register_sidebars");
+
+/**
+ * Enqueue the scripts and styles for StoreFrontal
+ *
+ * Sets up all the assets required for the theme to function properly.
+ *
+ * @since Storefrontal 1.0
+ */
+function storefrontal_enqueue_scripts(){
 	$up_options = upfw_get_options();
 
-		if( $up_options->disable_custom_fonts['checked'] != 1 || !class_exists('Typecase') )
-  	wp_enqueue_style('fonts',get_template_directory_uri() . "/css/fonts.css", false, THEME_VERSION, 'all');
+	if( $up_options->disable_custom_fonts['checked'] != 1 || !class_exists('Typecase') )
+  	wp_enqueue_style('fonts',get_template_directory_uri() . "/fonts.css", false, THEME_VERSION, 'all');
 
-  wp_enqueue_style('all',get_template_directory_uri() . "/css/screen.css", false, THEME_VERSION, 'all');
-	wp_enqueue_style('print',get_template_directory_uri() . "/css/print.css", false, THEME_VERSION, 'print');
-
-}
-
-add_action('wp_enqueue_scripts','storefrontal_styles');
-
-function storefrontal_scripts(){
-
-	wp_enqueue_script("master",get_template_directory_uri() . "/js/jquery.master.js", false, THEME_VERSION, 'all');
+	wp_enqueue_style('print',get_template_directory_uri() . "/print.css", false, THEME_VERSION, 'print');
+  wp_enqueue_script('view', get_template_directory_uri() . "/assets/js/view.js?auto", array('jquery'), THEME_VERSION );
+  wp_enqueue_script('fitvids', get_template_directory_uri() . "/assets/js/jquery.fitvids.js", array('jquery'), THEME_VERSION );
+	wp_enqueue_script('storefrontal-master',get_template_directory_uri() . "/assets/js/theme.js", array('view','fitvids'), THEME_VERSION, 'all');
+  wp_enqueue_style( 'storefrontal-style', get_stylesheet_uri(), false, THEME_VERSION );
 
 }
 
-add_action('wp_enqueue_scripts','storefrontal_scripts');
+add_action('wp_enqueue_scripts','storefrontal_enqueue_scripts',9999);
 
+/**
+ * Creates default header style
+ *
+ * @since StoreFrontal 1.0
+ */
 function storefrontal_header_image_style(){
 	echo "<style type='text/css'>";
 	echo "#logo a{";
@@ -162,9 +192,28 @@ function storefrontal_header_image_style(){
 	echo "background-image:"; header_image(); echo ";"; 
 	echo "}";
 	echo "</style>";
-
 }
 
+/**
+ * Destroys default gallery styling
+ *
+ * This ensures our pretty gallery grid styles don't get overridden by WordPress
+ * default styles.
+ *
+ * @since StoreFrontal 1.0
+ */
+function gallery_style_override($gallery_style){
+  $gallery_style = explode('</style>',$gallery_style);
+  return $gallery_style[1] . "\n\t\t\t";
+}
+
+add_filter('gallery_style','gallery_style_override');
+
+/**
+ * Creates head image style preview in admin
+ *
+ * @since StoreFrontal 1.0
+ */
 function storefrontal_header_image_style_admin(){
 	echo "<link href='http://fonts.googleapis.com/css?family=Neuton' rel='stylesheet' type='text/css'/>";
 	echo "<style type='text/css'>";
@@ -193,15 +242,11 @@ function storefrontal_header_image_style_admin(){
 
 }
 
-// register tag [template-url]
-function filter_template_url($text) {
-	return str_replace('[template-url]',get_bloginfo('template_url'), $text);
-}
-add_filter('the_content', 'filter_template_url');
-add_filter('get_the_content', 'filter_template_url');
-add_filter('widget_text', 'filter_template_url');
-
-/* Replace Standart WP Menu Classes */
+/**
+ * Replace Standard WP Menu Classes
+ *
+ * @since StoreFrontal 1.0
+ */
 function change_menu_classes($css_classes) {
         $css_classes = str_replace("current-menu-item", "active", $css_classes);
         $css_classes = str_replace("current-menu-parent", "active", $css_classes);
@@ -209,6 +254,14 @@ function change_menu_classes($css_classes) {
 }
 add_filter('nav_menu_css_class', 'change_menu_classes');
 
+/**
+ * Destroys default gallery styling
+ *
+ * This ensures our pretty gallery grid styles don't get overridden by WordPress
+ * default styles.
+ *
+ * @since StoreFrontal 1.0
+ */
 function storefrontal_navigation(){
 
 	if( function_exists('wp_pagenavi') ) : ?>
@@ -250,10 +303,12 @@ function storefrontal_get_audio_files($postid){
 }
 
 function storefrontal_the_404_content(){ ?>
-	<h2><?php _e("Not Found","storefrontal"); ?></h2>
-	<p><?php _e("Sorry, but you are looking for something that isn't here.","storefrontal"); ?></p> <?php
-	get_search_form();
-	
+  <div class="four_04">
+  	<h2><?php _e("Not Found","storefrontal"); ?></h2>
+  	<p><?php _e("Sorry, but you are looking for something that isn't here.","storefrontal"); ?></p>
+  	<?php get_search_form(); ?>
+  </div>
+<?php
 }
 
 function storefrontal_wpsc_pagination($totalpages = '', $per_page = '', $current_page = '', $page_link = '') {

@@ -27,7 +27,14 @@
 </head>
 <body <?php body_class(); ?>>
 	<div id="wrapper">
-		<div id="header">
+		<div id="header" class="clearfix">
+
+      <div class="link-holder">
+      	<?php if( function_exists('wpsc_cart_item_count') ): ?>
+      	<a href="<?php echo get_option('shopping_cart_url'); ?>"" class="cart"><?php _e("Cart","storefrontal"); ?><span><?php printf( _n('%d', '%d', wpsc_cart_item_count(), 'wpsc'), wpsc_cart_item_count() ); ?></span></a>
+      	<?php endif; ?>
+      </div>
+
 			<?php if( get_header_image() ): ?>
 				<img class="print-logo" src="<?php header_image(); ?>" width="253" height="57" alt="<?php bloginfo('description') ?>" />
 				<h1 class="logo"><a href="<?php bloginfo('url'); ?>"><img src="<?php header_image(); ?>" width="253" height="57" alt="<?php bloginfo('description') ?>" /></a></h1>
@@ -38,11 +45,6 @@
 			</div>
 			<?php endif; ?>
 			<div class="nav-holder">
-				<div class="link-holder">
-					<?php if( function_exists('wpsc_cart_item_count') ): ?>
-					<a href="<?php echo get_option('shopping_cart_url'); ?>"" class="cart"><?php _e("Cart","storefrontal"); ?><span><?php printf( _n('%d', '%d', wpsc_cart_item_count(), 'wpsc'), wpsc_cart_item_count() ); ?></span></a>
-					<?php endif; ?>
-				</div>
 				<?php wp_nav_menu(array('container' => false,
 							'theme_location' => 'primary',
 							'menu_id' => 'nav',

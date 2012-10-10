@@ -1,9 +1,9 @@
 <?php query_posts(array('post_type' => 'wpsc-product', 'showposts' => 4)); ?>
 <div class="products-block">
 	<?php if (wpsc_have_products()) : ?>
-	<ul class="products-list products-list-h">
+	<div class="products-list products-list-h">
 	<?php while (wpsc_have_products()) :  wpsc_the_product(); ?>
-		<li>
+		<div>
 			<h3 class="prodtitle entry-title">
 				<?php if(get_option('hide_name_link') == 1) : ?>
 					<?php echo wpsc_the_product_title(); ?>
@@ -149,9 +149,9 @@
 					
 				<?php // */ ?>
 		<?php if(wpsc_product_on_special()) : ?><span class="sale"><?php _e('Sale', 'wpsc'); ?></span><?php endif; ?>
-		</li>
+		</div>
 	<?php endwhile; ?>
-	</ul>
+	</div>
 	<?php else : ?>
 		<?php storefrontal_the_404_content(); ?>
 	<?php endif; wp_reset_query(); ?>

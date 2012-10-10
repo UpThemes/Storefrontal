@@ -1,51 +1,30 @@
 <?php
 /*
-Template Name: Home page
+Template Name: Homepage
 */
 ?>
 <?php get_header(); ?>
-<div class="carousel">
-	<?php query_posts(array('post_type' => 'slide', 'showposts' => -1)); ?>
-	<?php if (have_posts()) : ?>
-	<div class="frame">
-		<ul>
-		<?php $cnt = 0; ?>
-		<?php while (have_posts()) : the_post(); ?>
-			<li>
-				<?php the_post_thumbnail('carousel'); ?>
-				<div class="text-holder">
-					<h2><?php the_title(); ?></h2>
-					<span><?php echo get_post_meta(get_the_ID(),'slide_blurb',true); ?></span>
-					<?php $link = get_post_meta(get_the_ID(), 'link', true); ?>
-					<a href="<?php echo $link ? $link : get_permalink(); ?>"><?php _e("shop this style &raquo;","storefrontal"); ?></a>
-				</div>
-			</li>
-		<?php $cnt++; ?>
-		<?php endwhile; ?>
-		</ul>
-	</div>
-	<ul class="switcher">
-		<?php for($i = 0; $i < $cnt; $i++):?>
-		<li><a href="#"><?php echo $i;?></a></li>
-		<?php endfor; ?>
-	</ul>
-	<a href="#" class="link-prev"><?php _e("prev","storefrontal"); ?></a>
-	<a href="#" class="link-next"><?php _e("next","storefrontal"); ?></a>
-	<?php else : ?>
-	<div class="no-carousel">
-		<?php 
-		$url = admin_url('post-new.php?post_type=slide');
-		echo sprintf( __("No carousel images added. Please <a href='%s'>add a new carousel item</a> to see a carousel here.","storefrontal"), $url);
-		?>
-	</div>
-	<?php endif; wp_reset_query(); ?>
-</div>
-<?php if( function_exists('wpsc_have_products') ): ?>
-	<?php get_template_part('loop','wpsc'); ?>
-<?php endif; ?>
-<div class="block-holder">
-	<?php get_sidebar('home-1'); ?>
-	<?php get_sidebar('home-2'); ?>
-	<?php get_sidebar('home-3'); ?>
-</div>
+
+  <?php if( have_posts() ): while( have_posts() ): the_post(); ?>
+
+    <?php the_content(); ?>
+
+  <?php endwhile; endif; ?>
+
+  <?php if( function_exists('wpsc_have_products') ): ?>
+  	<?php get_template_part('loop','wpsc'); ?>
+  <?php endif; ?>
+
+  <div class="widgets">
+    <div class="block-holder">
+    	<?php get_sidebar('home-1'); ?>
+    </div>
+    <div class="block-holder">
+    	<?php get_sidebar('home-2'); ?>
+    </div>
+    <div class="block-holder">
+    	<?php get_sidebar('home-3'); ?>
+    </div>
+  </div>
+
 <?php get_footer(); ?>

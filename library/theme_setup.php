@@ -3,11 +3,6 @@
 function storefrontal_get_theme_plugin_list(){
 
 	return array(
-		'WP-PageNavi' => array(
-			'location' 	=> 'wp-pagenavi/wp-pagenavi.php',
-			'name' 		=> 'WP-PageNavi',
-			'required'	=> false
-		),
 		'MediaElement.js' => array(
 			'location' 	=> 'media-element-html5-video-and-audio-player/mediaelement-js-wp.php',
 			'name' 		=> 'MediaElement.js',

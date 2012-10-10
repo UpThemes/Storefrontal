@@ -25,11 +25,11 @@
  * - key	attr	array	(optional)	form-field attributes
  * - keys	url		string	(optional)	default-image URL, for image-type options
  * 
- * @package 	Micro
+ * @package 	StoreFrontal
  * @copyright	Copyright (c) 2011, UpThemes
  * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
  *
- * @since 		Micro 1.0
+ * @since 		StoreFrontal 1.0
  */
 
 $thistab = array(
@@ -63,22 +63,6 @@ $options = array(
 	    	'dark' => array(
 	    		"name" => "dark",
 	    		"title" => __( 'Dark', 'storefrontal' )
-	    	)
-	    )
-	),
-	'disable_custom_fonts' => array(
-		'tab' => $thistab['name'],
-		"name" => "disable_custom_fonts",
-		"title" => "Disable Custom Fonts",
-		'description' => __( 'Check this box to disable custom fonts.', 'storefrontal' ),
-		'section' => 'global_appearance',
-		'since' => '1.0',
-	    "id" => "global_appearance",
-	    "type" => "checkbox",
-	    "default" => false,
-	    "valid_options" => array(
-	    	'checked' => array(
-	    		"name" => 'checked'
 	    	)
 	    )
 	),
