@@ -224,6 +224,7 @@ if( have_posts() ):
   $post_thumbnail = get_the_post_thumbnail(get_the_ID(),'carousel');
   $title = get_the_title();
   $description = get_post_meta(get_the_ID(),'slide_blurb',true);
+  $link = get_permalink();
   $link = $link ? get_post_meta(get_the_ID(), 'link', true) : get_permalink();
   $text = __("shop this style &raquo;","storefrontal");
   
@@ -261,7 +262,6 @@ endif;
 $carousel = <<<CAROUSEL
 <div class="carousel">
 	$slides
-	$switcher
 	<a href="#" class="link-prev"><?php _e("prev","storefrontal"); ?></a>
 	<a href="#" class="link-next"><?php _e("next","storefrontal"); ?></a>
 </div>

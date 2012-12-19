@@ -15,8 +15,8 @@ $theme_name = 'storefrontal';
 */
 
 // Theme Version
-$theme_data = get_theme_data( get_theme_root() . '/' . $theme_name . '/style.css' );
-define('THEME_VERSION',$theme_data['Version']);
+$theme_data = wp_get_theme();
+define('THEME_VERSION',$theme_data->Version);
 
 // Load UpThemes Framework
 include_once( get_template_directory().'/options/options.php' );
@@ -75,8 +75,19 @@ function storefrontal_init(){
 	define( 'HEADER_IMAGE_WIDTH', apply_filters( 'storefrontal_header_image_width', 253 ) );
 	define( 'HEADER_IMAGE_HEIGHT', apply_filters( 'storefrontal_header_image_height',	57 ) );
 	define( 'HEADER_TEXTCOLOR', apply_filters( 'storefrontal_header_image_textcolor', "#ff4a4b" ) );
+
 	
-	add_custom_image_header('', 'storefrontal_header_image_style','storefrontal_header_image_style_admin');
+	$header_args = array(
+		'width'                  => HEADER_IMAGE_WIDTH,
+		'height'                 => HEADER_IMAGE_HEIGHT,
+		'flex-height'            => true,
+		'flex-width'             => true,
+		'default-text-color'     => HEADER_TEXTCOLOR,
+		'wp-head-callback'       => 'storefrontal_header_image_style',
+		'admin-preview-callback' => 'storefrontal_header_image_style_admin',
+	);
+
+	add_theme_support('custom-header', $header_args);
 
 }
 
