@@ -27,9 +27,6 @@ include_once( get_template_directory().'/library/widgets.php' );
 // Slider
 include_once( get_template_directory().'/library/carousel/carousel.php' );
 
-// Theme Library
-include_once( get_template_directory() . '/themelib/load.php' );
-
 // Theme Options
 include_once( get_template_directory().'/theme-options/colors-and-images.php' );
 

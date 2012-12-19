@@ -640,7 +640,7 @@ blockquote {
 }
 
 .dark #header{
-  border-bottom: 1px solid #544c4c;
+  border-bottom: none;
 
   .header-text .logo a {
     color: #f4c32f;
@@ -663,6 +663,7 @@ blockquote {
   
     ul li:hover a {
       background-color: #f4c32f; 
+      color: #222;
     }
   }
 
@@ -1011,7 +1012,7 @@ textarea{
 
 #sidebar {
   width: 30%;
-  padding: 31px 0 0;
+  padding: 0;
   float: right;
 
   .widget {
@@ -1023,7 +1024,6 @@ textarea{
 
     &:first-child{
       border-top: none;
-      padding-top: 0;
     }
 
     p {
@@ -1230,7 +1230,7 @@ textarea{
   width: 66%;
   float: left;
   color: #81827f;
-  margin: -5px 0 0;
+  margin: 0;
 
   a {
     color: #FF4A4B; 
@@ -1620,7 +1620,7 @@ textarea{
 }
 
 .dark .block-holder {
-  border-top: 1px solid #544c4c; 
+  border-top: none; 
 
   .col .widget {
     background: #2e2929;

@@ -2,6 +2,13 @@
 
 include_once('meta_handler.php');
 
+function storefrontal_register_carousel_scripts(){
+  wp_register_script('flexslider', trailingslashit( get_template_directory_uri() ) . 'library/carousel/flexslider/jquery.flexslider.js', array('jquery'), false );
+  wp_register_style('flexslider-css', trailingslashit( get_template_directory_uri() ) . 'library/carousel/flexslider/flexslider.css' );
+}
+
+add_action('init','storefrontal_register_carousel_scripts');
+
 /*
  * Custom Content Type for Series
  ***********************************************/
@@ -10,8 +17,6 @@ function storefrontal_slides_init() {
 
 	add_image_size('carousel', 940, 400, true );
 
-  wp_register_script('flexslider', trailingslashit( get_template_directory_uri() ) . 'library/carousel/flexslider/jquery.flexslider.js', array('jquery'), false );
-  wp_register_style('flexslider-css', trailingslashit( get_template_directory_uri() ) . 'library/carousel/flexslider/flexslider.css' );
 	$icon =  trailingslashit( get_template_directory_uri() ) . 'library/carousel/images/slides_icon.png';
 
 	$show_labels = array(
