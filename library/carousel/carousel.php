@@ -69,7 +69,7 @@ function storefrontal_slides_get_meta(){
   		'name' => __('Related Post or Product','storefrontal'),
   		'descr' => __('Select a post or product to associate with this slide.','storefrontal'),
   		'type' => 'related_post',
-  		'options' => array('post_types' => array('post','wpsc-product'))
+  		'options' => array('post_types' => array('post','product'))
 		),
 		array(
   		'id' => 'slide_blurb',
@@ -95,7 +95,7 @@ function storefrontal_slides_get_meta(){
 
 function storefrontal_slides_custom_init(){
 
-	if( get_post_type($_REQUEST['post']) == 'slide' ):
+	if( get_post_type(get_query_var('post_type')) == 'slide' ):
 	  wp_enqueue_script('metaboxes', get_template_directory_uri() . '/library/carousel/scripts/jquery.metaboxes.js', array('jquery') );
 		wp_enqueue_style('metaboxes-style', get_template_directory_uri() . '/library/carousel/styles/metaboxes.css');
 	endif;
@@ -117,7 +117,8 @@ function storefrontal_slides_metabox_output(){
 	?>
 	<p class="meta item">
 	Upload an image or select an existing image from the Media Library:
-	<a class="button thickbox" href="<?php echo get_admin_url(); ?>media-upload.php?post_id=<?php echo $post->ID; ?>&TB_iframe=1" id="upload-attachments" style="margin:5px;">Set/Update Featured Image</a>
+	<?php echo '<a href="#" class="button insert-media add_media" data-editor="content" title="'. __("Add Media") . '"><span class="wp-media-buttons-icon"></span> '. __("Add Media") . '</a>'; ?>
+
 	<br><em>Slide image size: 960px X 340px</em>
 	</p>
 	<?php
@@ -155,10 +156,10 @@ function storefrontal_slides_save(){
 
 	$storefrontal_slides_custom_meta = storefrontal_slides_get_meta();
 
-	if($_REQUEST['action'] != 'autosave'):
+	if( get_query_var('post_type') == 'slide' && get_query_var('action') != 'autosave'):
 	
 		foreach( $storefrontal_slides_custom_meta as $meta ):
-				update_post_meta($post->ID, $meta['id'], $_REQUEST[$meta['id']]);
+				update_post_meta($post->ID, $meta['id'], get_query_var($meta['id']));
 		endforeach;
 		
 	endif;

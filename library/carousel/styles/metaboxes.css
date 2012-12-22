@@ -1,15 +1,17 @@
 p.meta{
 	padding: 10px 5px;
 	border-bottom: 1px solid #ddd;
-	font-size: 1.4em;
 	overflow: auto;
+}
+
+p.meta:last-child{
+	border-bottom: none;
 }
 
 p.meta label{
 	font-weight: bold;
 	width: 170px;
 	display: block;
-	font-size: 1.1em;
 	float: left;
 	margin-right: 5px;
 }
