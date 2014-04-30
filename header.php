@@ -4,14 +4,14 @@
 <head profile="http://gmpg.org/xfn/11">
 	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 
-	<title><?php 
+	<title><?php
 
 	if( class_exists('All_in_One_SEO_Pack') ):
-		wp_title(); 
+		wp_title();
 	else:
-		if( is_front_page() ) 
-			echo get_bloginfo('name') . " / " . get_bloginfo('description'); 
-		wp_title('',true,'left'); 
+		if( is_front_page() )
+			echo get_bloginfo('name') . " / " . get_bloginfo('description');
+		wp_title('',true,'left');
 	endif;
 
 	?></title>
@@ -19,7 +19,7 @@
 	<?php
 	if( isset($up_options->favicon ))
 		echo '<link rel="shortcut icon" href="' . $up_options->favicon . '">';
-	
+
 	if ( is_singular() && get_option( 'thread_comments' ) ) wp_enqueue_script( 'comment-reply' );
 
 	wp_head(); ?>
@@ -29,11 +29,17 @@
 	<div id="wrapper">
 		<div id="header" class="clearfix">
 
-      <div class="link-holder">
-      	<?php if( function_exists('wpsc_cart_item_count') ): ?>
-      	<a href="<?php echo get_option('shopping_cart_url'); ?>"" class="cart"><?php _e("Cart","storefrontal"); ?><span><?php printf( _n('%d', '%d', wpsc_cart_item_count(), 'wpsc'), wpsc_cart_item_count() ); ?></span></a>
-      	<?php endif; ?>
-      </div>
+			<div class="link-holder">
+				<?php global $woocommerce;
+				if( $woocommerce ){
+				?>
+				<a class="cart" href="<?php echo $woocommerce->cart->get_cart_url(); ?>" title="<?php _e('Cart:', 'storefrontal'); ?>"><?php echo sprintf(_n('%d item', '%d items', $woocommerce->cart->cart_contents_count, 'storefrontal'), $woocommerce->cart->cart_contents_count);?>  <span><?php echo $woocommerce->cart->get_cart_total(); ?></span></a>
+				<?php } ?>
+
+			<?php if( function_exists('wpsc_cart_item_count') ): ?>
+				<a href="<?php echo get_option('shopping_cart_url'); ?>" class="cart"><?php _e("Cart","storefrontal"); ?><span><?php printf( _n('%d', '%d', wpsc_cart_item_count(), 'wpsc'), wpsc_cart_item_count() ); ?></span></a>
+			<?php endif; ?>
+			</div>
 
 			<?php if( get_header_image() ): ?>
 				<img class="print-logo" src="<?php header_image(); ?>" width="253" height="57" alt="<?php bloginfo('description') ?>" />
@@ -41,14 +47,14 @@
 			<?php else: ?>
 			<div class="header-text">
 				<h1 class="logo"><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
-				<p class="desc"><?php bloginfo('description'); ?></p>			
+				<p class="desc"><?php bloginfo('description'); ?></p>
 			</div>
 			<?php endif; ?>
 			<div class="nav-holder">
-				<?php wp_nav_menu(array('container' => false,
-							'theme_location' => 'primary',
-							'menu_id' => 'nav',
-							'menu_class' => '') ); ?>
+			<?php wp_nav_menu(array('container' => false,
+					'theme_location' => 'primary',
+					'menu_id' => 'nav',
+					'menu_class' => '') ); ?>
 			</div>
 		</div>
 		<div id="main">

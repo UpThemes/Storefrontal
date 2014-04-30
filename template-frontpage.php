@@ -5,15 +5,15 @@ Template Name: Homepage
 ?>
 <?php get_header(); ?>
 
+    <?php echo do_shortcode('[slideshow]'); ?>
+
   <?php if( have_posts() ): while( have_posts() ): the_post(); ?>
 
     <?php the_content(); ?>
 
   <?php endwhile; endif; ?>
 
-  <?php if( function_exists('wpsc_have_products') ): ?>
-  	<?php get_template_part('loop','wpsc'); ?>
-  <?php endif; ?>
+  <?php get_template_part('woocommerce','loop'); ?>
 
   <div class="widgets">
     <div class="block-holder">

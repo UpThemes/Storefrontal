@@ -6,29 +6,25 @@
 
 }
 
-@media ( max-width:640px ){
+@media ( max-width: 640px ){
 
   h1{
     font-size: 1.4em;
-    line-height: 1.2em;
     margin-bottom: 1em;
   }
 
   h2{
     font-size: 1.2em;
-    line-height: 1.2em;
     margin-bottom: 1em;
   }
-  
+
   h3{
     font-size: 1.1em;
-    line-height: 1.2em;
     margin-bottom: 1em;
   }
-  
+
   h4,h5,h6{
     font-size: 1em;
-    line-height: 1.2em;
     margin-bottom: 1em;
   }
 
@@ -42,14 +38,14 @@
   #content{
     width: auto;
   }
-  
+
   #sidebar{
     width: auto;
     text-align: center;
   }
 
-  .wpsc_buy_button, 
-  .single_product_display form.product_form input, 
+  .wpsc_buy_button,
+  .single_product_display form.product_form input,
   #content .single_product_display form.product_form input{
     font-size: .8em;
   }

@@ -102,8 +102,8 @@ function storefrontal_slides_custom_init(){
 
 }
 
-add_action("admin_print_styles-post.php", 'storefrontal_slides_custom_init',0);  
-add_action("admin_print_styles-post-new.php", 'storefrontal_slides_custom_init',0);  
+add_action("admin_print_styles-post.php", 'storefrontal_slides_custom_init',0);
+add_action("admin_print_styles-post-new.php", 'storefrontal_slides_custom_init',0);
 
 function storefrontal_slides_custom_meta(){
 	add_meta_box( 'slides_metabox', __('Slide Details', 'storefrontal'), 'storefrontal_slides_metabox_output', 'slide' ,'normal', 'high' );
@@ -123,11 +123,11 @@ function storefrontal_slides_metabox_output(){
 	</p>
 	<?php
 	foreach( $storefrontal_slides_custom_meta as $meta ):
-	
+
 		meta_handler($meta);
 
 	endforeach;
-	
+
 }
 
 add_action('wp_ajax_get_post_thumbnail','storefrontal_slides_get_post_thumbnail');
@@ -147,7 +147,7 @@ function storefrontal_slides_get_post_thumbnail(){
 	echo $response;
 
 	exit;
-	
+
 }
 
 function storefrontal_slides_save(){
@@ -157,17 +157,17 @@ function storefrontal_slides_save(){
 	$storefrontal_slides_custom_meta = storefrontal_slides_get_meta();
 
 	if( get_query_var('post_type') == 'slide' && get_query_var('action') != 'autosave'):
-	
+
 		foreach( $storefrontal_slides_custom_meta as $meta ):
 				update_post_meta($post->ID, $meta['id'], get_query_var($meta['id']));
 		endforeach;
-		
+
 	endif;
-	
+
 }
 
 function storefrontal_slides_columns($columns) {
-		unset($columns['categories']); 
+		unset($columns['categories']);
 	    $columns['slides_image'] = 'Slide';
 	    $columns['menu_order'] = 'Order';
     return $columns;
@@ -192,7 +192,7 @@ function storefrontal_slides_ajax_populate() {
 	$guid = get_permalink($_POST['pid']);
 	$excerpt = get_post_meta($post->ID,'subtitle',true);
 	if(!$excerpt) {	$excerpt = substr(strip_tags($post->post_content), 0 , 100) . ' ... '; }
-	$x = new WP_Ajax_Response( 
+	$x = new WP_Ajax_Response(
 		array(
 		   'what' => 'autosave',
 		   'id' => $post->ID,
@@ -213,27 +213,31 @@ function storefrontal_carousel_embed( $atts ) {
 		'type' => 'slide'
 	), $atts ) );
 
-$carousel_query = query_posts(array('post_type' => $type, 'showposts' => -1));
+$carousel_query = new WP_Query(
+					array(
+						'post_type' => $type,
+						'showposts' => -1
+					));
 
-if( have_posts() ):
+if( $carousel_query->have_posts() ):
 
   wp_enqueue_script('flexslider');
   wp_enqueue_style('flexslider-css');
 
-  $slides = "
-    <div class=\"flexslider\">
-    	<ul class=\"slides\">
-    ";
+  $slides = '
+    <div class="flexslider">
+    	<ul class="slides">
+    ';
 
-  while (have_posts()) : the_post();
-  
+  while ( $carousel_query->have_posts() ) : $carousel_query->the_post();
+
   $post_thumbnail = get_the_post_thumbnail(get_the_ID(),'carousel');
   $title = get_the_title();
   $description = get_post_meta(get_the_ID(),'slide_blurb',true);
   $link = get_permalink();
   $link = $link ? get_post_meta(get_the_ID(), 'link', true) : get_permalink();
   $text = __("shop this style &raquo;","storefrontal");
-  
+
   $slides .= <<<SLIDE
   	<li>
   		$post_thumbnail
@@ -246,17 +250,16 @@ if( have_posts() ):
 SLIDE;
 
   endwhile;
-  
-  $slides .= "
+
+  $slides .= '
     </ul>
-  </div>
-  ";
+  </div>';
 
 else:
 
   $url = admin_url('post-new.php?post_type=slide');
   $message = sprintf( __("No carousel images added. Please <a href='%s'>add a new carousel item</a> to see a carousel here.","storefrontal"), $url);
-  
+
   $slides = <<<SLIDE
   <div class="no-flexslider">
   	$message
